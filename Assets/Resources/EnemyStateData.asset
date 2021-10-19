@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aecce331484549b469c058a8a98e74c3, type: 3}
+  m_Name: EnemyStateData
+  m_EditorClassIdentifier: 
+  sheets:
+  - name: Sheet1
+    list:
+    - name: bat
+      max_hp: 10
+      max_mp: 5
+      origin_attack: 3
+      origin_defense: 1
+      origin_speed: 10
+      technique: 5
+      range: 5

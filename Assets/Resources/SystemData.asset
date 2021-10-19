@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 587cfc7e324f71a4c91b142b5a51369f, type: 3}
+  m_Name: SystemData
+  m_EditorClassIdentifier: 
+  sheets:
+  - name: Sheet1
+    list:
+    - button_speed: 5
+      button_color_speed: 5
+      main_menu_button_distance: 225
+      button_move_time: 0.2
+      slideTime: 0.4

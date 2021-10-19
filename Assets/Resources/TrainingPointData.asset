@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d12f41bf6c77f49b53fec7692cec9a, type: 3}
+  m_Name: TrainingPointData
+  m_EditorClassIdentifier: 
+  sheets:
+  - name: Sheet1
+    list:
+    - trainingNo: 0
+      _trainingName: HP
+      _tired: 30
+      _hpBase: 25
+      _mpBase: 0
+      _attackBase: 4
+      _defenseBase: 4
+      _speedBase: 0
+      _purpleStoneConsumeRaito: 0.25
+      _redStoneConsumeRaito: 0
+      _blueStoneConsumeRaito: 0.15
+      _greenStoneConsumeRaito: 0
+      _yellowStoneConsumeRaito: 0
+      _magicStoneRaito: 1000
+      _sameConsumeStoneCoefficient: 0.4
+    - trainingNo: 1
+      _trainingName: MP
+      _tired: 15
+      _hpBase: 0
+      _mpBase: 21
+      _attackBase: 0
+      _defenseBase: -3
+      _speedBase: 0
+      _purpleStoneConsumeRaito: 0
+      _redStoneConsumeRaito: 0.35
+      _blueStoneConsumeRaito: 0
+      _greenStoneConsumeRaito: 0
+      _yellowStoneConsumeRaito: 0.1
+      _magicStoneRaito: 0
+      _sameConsumeStoneCoefficient: 0
+    - trainingNo: 2
+      _trainingName: attack
+      _tired: 26
+      _hpBase: 4
+      _mpBase: 0
+      _attackBase: 18
+      _defenseBase: 0
+      _speedBase: 9
+      _purpleStoneConsumeRaito: 0.2
+      _redStoneConsumeRaito: 0
+      _blueStoneConsumeRaito: 0.25
+      _greenStoneConsumeRaito: 0.1
+      _yellowStoneConsumeRaito: 0
+      _magicStoneRaito: 0
+      _sameConsumeStoneCoefficient: 0
+    - trainingNo: 3
+      _trainingName: defense
+      _tired: 37
+      _hpBase: 15
+      _mpBase: 11
+      _attackBase: 0
+      _defenseBase: 26
+      _speedBase: -2
+      _purpleStoneConsumeRaito: 0
+      _redStoneConsumeRaito: 0
+      _blueStoneConsumeRaito: 0
+      _greenStoneConsumeRaito: 0.3
+      _yellowStoneConsumeRaito: 0.1
+      _magicStoneRaito: 0
+      _sameConsumeStoneCoefficient: 0
+    - trainingNo: 4
+      _trainingName: speed
+      _tired: 24
+      _hpBase: 3
+      _mpBase: 0
+      _attackBase: 6
+      _defenseBase: 0
+      _speedBase: 17
+      _purpleStoneConsumeRaito: 0.05
+      _redStoneConsumeRaito: 0.15
+      _blueStoneConsumeRaito: 0
+      _greenStoneConsumeRaito: 0
+      _yellowStoneConsumeRaito: 0.3
+      _magicStoneRaito: 0
+      _sameConsumeStoneCoefficient: 0
+    - trainingNo: 5
+      _trainingName: rest
+      _tired: -50
+      _hpBase: 0
+      _mpBase: 0
+      _attackBase: 0
+      _defenseBase: 0
+      _speedBase: 0
+      _purpleStoneConsumeRaito: 0.15
+      _redStoneConsumeRaito: 0.15
+      _blueStoneConsumeRaito: 0.15
+      _greenStoneConsumeRaito: 0.15
+      _yellowStoneConsumeRaito: 0.15
+      _magicStoneRaito: 0
+      _sameConsumeStoneCoefficient: 0

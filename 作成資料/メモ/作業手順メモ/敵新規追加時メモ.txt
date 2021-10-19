@@ -1,0 +1,16 @@
+１．敵prefabを作成、コライダーをセット（喰らい判定）、非表示でコライダーをセット（攻撃判定）、EnemyControllerスクリプトをアタッチ
+　２．タグを新しく作り（Enemy + キャラ名）prefabにセット
+　３．EnemyStateDataのエクセルに敵ステータスの行を追加
+　４．エクセルを右クリックし、Reimport
+　５．EnemyStateのコンストラクタのContainsの判定と、エクセルデータからの取得を作成。データ取得はenemy_noによりlistの行数を判断
+
+
+
+
+ステータス管理
+　・DangeonMapCreateクラスから、InstantiateでPrefabの敵オブジェクトを生成
+　・敵オブジェクトにアタッチされたEnemyControllerからEnemyStateをGetComponentして、値の上限を記載する
+　・CharacterStateを継承させたEnemyState（数値ステータスデータを保持）を
+　 EnemyControllerからインスタンス化させて保持する
+　・その際、コンストラクタによりEnemyStateをセット
+　・敵オブジェクトのタグは、「Enemy＋キャラ名」とし、Containで検索する
