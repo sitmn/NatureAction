@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dec136fb504b864d917e693936ef8a1, type: 3}
+  m_Name: HighwayName
+  m_EditorClassIdentifier: 
+  sheets:
+  - name: Sheet1
+    list:
+    - _sceneName: BlessingForestScene
+      _townName: "\u30A4\u30FC\u30BA\u30A7"
+      _townGateName: "\u5317\u9580"
+      _startPosX: 0
+      _startPosZ: 0
+      _startPosY: 0
+    - _sceneName: BlessingForestScene
+      _townName: "\u30D5\u30A3\u30A8\u30EB\u30C6"
+      _townGateName: "\u5357\u9580"
+      _startPosX: 30
+      _startPosZ: 220
+      _startPosY: 0
+    - _sceneName: CalmLakeScene
+      _townName: "\u30D5\u30A3\u30A8\u30EB\u30C6"
+      _townGateName: "\u6771\u9580"
+      _startPosX: 0
+      _startPosZ: 0
+      _startPosY: 0
+    - _sceneName: CalmLakeScene
+      _townName: "\u30DC\u30FC\u30B9\u30CF\u30A4\u30C8"
+      _townGateName: "\u897F\u9580"
+      _startPosX: 420
+      _startPosZ: 56
+      _startPosY: 0

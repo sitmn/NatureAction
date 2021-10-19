@@ -34,9 +34,38 @@ public static class ConstValue
     //点滅体力ゲージ点滅間隔
     public const float _hPBarBlinkTime = 0.6f;
 
+    //ボタン点滅間隔
+    public const float _buttonBlinkTime = 5f;
+
     //テキスト増減にかかる時間
     public const float _textChangeTime = 0.5f;
 
     //画面フェードアウトの時間
     public const float _fadeOutTime = 0.5f;
+
+    //スキルセット最大数
+    public const int _skillSetMax = 3;
+
+
+    /*****************DungeonScene************************/
+    //キャラクターの移動と回転速度
+    public const float _rotateSpeed = 10f;
+    public const float _playerSpeed = 10f;
+
+    //カメラの回転速度
+    public const float _cameraRotateSpeed = 1f;
+    //カメラの停止中比重
+    public const int _idleCameraWeight = 30;
+    //カメラの移動中比重最大値
+    public const int _moveCameraWeightMax = 1000;
+
+    //カメラの移動比重の上昇量
+    public const int _moveCameraWeightUp = 2;
+    //カメラの移動比重の減少量
+    public const int _moveCameraWightDown = 3;
+
+    //スキル変更クールタイム
+    public const int _coolTimeSkillChange = 50;
+    //キャラ変更クールタイム
+    public const int _coolTimeCharChange = 500;
 }

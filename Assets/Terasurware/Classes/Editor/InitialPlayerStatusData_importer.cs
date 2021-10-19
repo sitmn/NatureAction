@@ -57,6 +57,9 @@ public class InitialPlayerStatusData_importer : AssetPostprocessor {
 					cell = row.GetCell(4); p._initialAttack = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(5); p._initialDefense = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(6); p._initialSpeed = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(7); p._initialAttackStartTime = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(8); p._initialAttackEndTime = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(9); p._initialAttackDurationTime = (int)(cell == null ? 0 : cell.NumericCellValue);
 						s.list.Add (p);
 					}
 					data.sheets.Add(s);

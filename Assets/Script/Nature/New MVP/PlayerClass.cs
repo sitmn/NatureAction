@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,24 @@ public class NewBehaviourScript : MonoBehaviour
 //プレイヤーステータスクラス
 public class PlayerStatus
 {
+    private int _attackStartTime;
+    public int AttackStartTime
+    {
+        get { return _attackEndTime; }
+        set { _attackEndTime = value; }
+    }
+    private int _attackEndTime;
+    public int AttackEndTime
+    {
+        get { return _attackEndTime; }
+        set { _attackEndTime = value; }
+    }
+    private int _attackDurationTime;
+    public int AttackDurationTime
+    {
+        get { return _attackDurationTime; }
+        set { _attackDurationTime = value; }
+    }
     private int _maxHealth;
     public int MaxHealth
     {
@@ -102,6 +122,7 @@ public class PlayerStatus
     }
 
     public List<Skill> _playerSkillList;
+    public Skill[] _playerSkill = new Skill[ConstValue._skillSetMax];
     public List<Item> _playerItemList;
     public Equipment _playerEquipment;
 
@@ -111,7 +132,10 @@ public class PlayerStatus
                       , int _initialMp
                       , int _initialAttack
                       , int _initialDefense
-                      , int _initialSpeed)
+                      , int _initialSpeed
+                      , int _initialAttackStartTime
+                      , int _initialAttackEndTime
+                      , int _initialAttackDurationTime)
     {
         _maxHealth = _initialHealth;
         _health = _maxHealth;
@@ -122,6 +146,9 @@ public class PlayerStatus
         _attack = _initialAttack;
         _defense = _initialDefense;
         _speed = _initialSpeed;
+        _attackStartTime = _initialAttackStartTime;
+        _attackEndTime = _initialAttackEndTime;
+        _attackDurationTime = _initialAttackDurationTime;
 
         _playerSkillList = new List<Skill>();
         _playerItemList = new List<Item>();
@@ -132,8 +159,57 @@ public class PlayerStatus
 //スキルクラス
 public class Skill
 {
-    public string _name;
-    public int _damage;
+    private string _skillName;
+    public string SkillName
+    {
+        get { return _skillName; }
+        set { _skillName = value; }
+    }
+    private float _skillAttackMagnification;
+    public float SkillAttackMagnification
+    {
+        get { return _skillAttackMagnification; }
+        set { _skillAttackMagnification = value; }
+    }
+    private int _skillStartTime;
+    public int SkillStartTime
+    {
+        get { return _skillStartTime; }
+        set { _skillStartTime = value; }
+    }
+    private int _skillEndTime;
+    public int SkillEndTime
+    {
+        get { return _skillEndTime; }
+        set { _skillEndTime = value; }
+    }
+    private int _skillDurationTime;
+    public int SkillDurationTime
+    {
+        get { return _skillDurationTime; }
+        set { _skillDurationTime = value; }
+    }
+    private float _skillAttackRange;
+    public float SkillAttackRange
+    {
+        get { return _skillAttackRange; }
+        set { _skillAttackRange = value; }
+    }
+
+    public Skill(string _skillName,
+                 float _skillAttackMagnification,
+                 int _skillStartTime,
+                 int _skillEndTime,
+                 int _skillDurationTime,
+                 float _skillAttackRange){
+
+        this._skillName = _skillName;
+        this._skillAttackMagnification = _skillAttackMagnification;
+        this._skillStartTime = _skillStartTime;
+        this._skillEndTime = _skillEndTime;
+        this._skillDurationTime = _skillDurationTime;
+        this._skillAttackRange = _skillAttackRange;
+    }
 }
 
 //アイテムクラス

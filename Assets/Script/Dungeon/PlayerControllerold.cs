@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerControllerold : MonoBehaviour
 {
     //クラス
     //private CharacterController characterController;
@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody player1Rb;
     private Rigidbody player2Rb;
     public Camera MainCamera;
-    private MainCameraController mainCameraController;
+    private MainCameraControllerold mainCameraController;
     private Animator player1Animation;
     private Animator player2Animation;
     private GameObject weakAttackObj;    //弱攻撃当たり判定
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainCameraController = MainCamera.GetComponent<MainCameraController>();
+        mainCameraController = MainCamera.GetComponent<MainCameraControllerold>();
 
         //characterController = GetComponent<CharacterController>();
         player1Rb = GetComponent<Rigidbody>();
@@ -158,16 +158,16 @@ public class PlayerController : MonoBehaviour
         Quaternion playerRotate = Quaternion.LookRotation(moveDirection);
 
 
-        //最終回転姿勢への回転割合
+        /*//最終回転姿勢への回転割合
         float rotateSpeed = Time.deltaTime * GameManagerold.rotateSpeedMagnification * playerStatus.player_RotateSpeed;
         //割合が上限を超えていれば最大値に
         if(rotateSpeed > 1)
         {
             rotateSpeed = 1;
-        }
+        }*/
 
         //最終回転姿勢の途中の姿勢
-        playerRotate = Quaternion.Slerp(Character.transform.rotation, playerRotate, rotateSpeed);
+        playerRotate = Quaternion.Slerp(Character.transform.rotation, playerRotate, 0.3f);
         //playerへ反映
         Character.transform.rotation = playerRotate;
     }

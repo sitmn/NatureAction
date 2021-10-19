@@ -51,10 +51,9 @@ public class SystemData_importer : AssetPostprocessor {
 						SystemData.Param p = new SystemData.Param ();
 						
 					cell = row.GetCell(0); p.button_speed = (float)(cell == null ? 0 : cell.NumericCellValue);
-					cell = row.GetCell(1); p.button_color_speed = (float)(cell == null ? 0 : cell.NumericCellValue);
-					cell = row.GetCell(2); p.main_menu_button_distance = (float)(cell == null ? 0 : cell.NumericCellValue);
-					cell = row.GetCell(3); p.button_move_time = (float)(cell == null ? 0 : cell.NumericCellValue);
-					cell = row.GetCell(4); p.slideTime = (float)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(1); p.main_menu_button_distance = (float)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(2); p.button_move_time = (float)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(3); p.slideTime = (float)(cell == null ? 0 : cell.NumericCellValue);
 						s.list.Add (p);
 					}
 					data.sheets.Add(s);

@@ -16,7 +16,6 @@ MonoBehaviour:
   - name: Sheet1
     list:
     - button_speed: 5
-      button_color_speed: 5
       main_menu_button_distance: 225
       button_move_time: 0.2
       slideTime: 0.4

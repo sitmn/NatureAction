@@ -728,7 +728,7 @@ ModelImporter:
     second: WGS_attackA4
   - first:
       74: 7400008
-    second: WGS_attackA5
+    second: SkillTypeA
   - first:
       74: 7400010
     second: WGS_attackA5toStand
@@ -1102,7 +1102,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.4999337
+        functionName: AttackStart
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -1925,7 +1932,7 @@ ModelImporter:
       name: WGS_attackA5
       takeName: Take 001
       internalID: 7400008
-      firstFrame: 111
+      firstFrame: 103
       lastFrame: 147
       wrapMode: 0
       orientationOffsetY: 0
@@ -1947,14 +1954,7 @@ ModelImporter:
       curves: []
       events:
       - time: 0.4988865
-        functionName: strongAttackStart
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.9188192
-        functionName: strongAttackEnd
+        functionName: SkillStart
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

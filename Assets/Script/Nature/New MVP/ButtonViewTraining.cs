@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class ButtonViewTraining : ButtonViewBase
 {
-    private SystemData systemData;
-
     //修行タイプ用のNo
     /*0:体力修行
       1:攻撃修行
@@ -42,11 +40,9 @@ public class ButtonViewTraining : ButtonViewBase
     //ボタン判定用
     void Start()
     {
-        systemData = Resources.Load("SystemData") as SystemData;
-
         _buttonNo = 1;
 
-        buttonColorSpeed = systemData.sheets[0].list[0].button_color_speed;
+        buttonColorSpeed = ConstValue._buttonBlinkTime;
 
         buttonImage = this.GetComponent<Image>();
         thisColor = this.GetComponent<Image>().color;

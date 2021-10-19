@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainCameraController : MonoBehaviour
+public class MainCameraControllerold : MonoBehaviour
 {
     [SerializeField]
     private GameObject playerObj;

@@ -1,7 +1,14 @@
 {
   "dependencies": {
+    "com.cysharp.unitask": {
+      "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "69be818a46ca876afc5cb370a0ceb00324b4437d"
+    },
     "com.unity.cinemachine": {
-      "version": "2.6.3",
+      "version": "2.6.10",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
@@ -32,6 +39,13 @@
     },
     "com.unity.ide.vscode": {
       "version": "1.2.3",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.inputsystem": {
+      "version": "1.0.2",
       "depth": 0,
       "source": "registry",
       "dependencies": {},

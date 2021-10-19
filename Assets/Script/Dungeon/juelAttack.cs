@@ -67,11 +67,11 @@ public class juelAttack : MonoBehaviour
         enemyController.damageEnemy(damage);
     }
 
-    private void juelPlayerAttackDamage(PlayerController playerController)
+    private void juelPlayerAttackDamage(PlayerController2 playerController)
     {
         int damage = transform.parent.gameObject.GetComponent<JuelController>().juelStatus.juel_Attack - playerStatus.player_Defense;
 
-        playerController.damagePlayer(damage);
+        //playerController.damagePlayer(damage);
     }
 
     void OnTriggerEnter(Collider other)
@@ -79,7 +79,7 @@ public class juelAttack : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             Debug.Log("aaaaa");
-            juelPlayerAttackDamage(other.gameObject.GetComponent<PlayerController>());
+            juelPlayerAttackDamage(other.gameObject.GetComponent<PlayerController2>());
             Destroy(gameObject);
         }
         else if(other.gameObject.tag == "Enemy")

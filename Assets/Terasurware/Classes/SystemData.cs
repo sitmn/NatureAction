@@ -18,7 +18,6 @@ public class SystemData : ScriptableObject
 	{
 		
 		public float button_speed;
-		public float button_color_speed;
 		public float main_menu_button_distance;
 		public float button_move_time;
 		public float slideTime;

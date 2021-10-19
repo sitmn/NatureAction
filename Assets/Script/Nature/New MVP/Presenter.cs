@@ -6,6 +6,7 @@ using UniRx;
 using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 
 public class Presenter : MonoBehaviour
 {
@@ -61,6 +62,8 @@ public class Presenter : MonoBehaviour
     //修行アニメーション暗転画面（ボタン検知用リストには入れない（ボタン非アクティブのタイミングが違い、同時押しの心配もないため））
     [SerializeField]
     private Button _skipButton;
+    //修行計算用クラス
+    private TrainingCalculateScript _trainingCalculateScr;
     /**************************************************/
 
     /******************** 移動情報 ********************/
@@ -74,11 +77,17 @@ public class Presenter : MonoBehaviour
     private PlayableDirector _moveConfirmDirector;
     /**************************************************/
 
+    /******************** スキル情報 ********************/
+    //スキル画面用スクリプト
+    private SkillScript _skillScr;
+    private SkillData _skillData;
+    /**************************************************/
 
     // Start is called before the first frame update
     void Start()
     {
         systemData = Resources.Load("SystemData") as SystemData;
+        _skillData = Resources.Load("SkillData") as SkillData;
 
         ButtonStream _buttonStream = new ButtonStream
             (ButtonViewScreenChangeArray 
@@ -111,6 +120,10 @@ public class Presenter : MonoBehaviour
         _skipButton.OnClickAsObservable().ThrottleFirst(TimeSpan.FromMilliseconds(10))
             .Subscribe(_ => {
                 TimeLineStart(_trainingConfirmDirector);});
+
+
+        _trainingCalculateScr = new TrainingCalculateScript();
+        _skillScr = new SkillScript();
     }
 
     
@@ -190,8 +203,7 @@ public class Presenter : MonoBehaviour
     //ボタンNo1:修行ボタンの選択処理  各パラメータを取得,プレイヤー1と2の修行ボタン選択時１つのみ点滅
     private void TrainingSelect(ButtonViewBase _buttonViewBase)
     {
-        //修行ボタンの値計算用クラス
-        TrainingCalculateScript _trainingCalculateScr = new TrainingCalculateScript();
+        _trainingCalculateScr = new TrainingCalculateScript();
         //修行ボタンクラスとしてキャスト
         ButtonViewTraining _buttonViewTraining = _buttonViewBase as ButtonViewTraining;
         
@@ -350,7 +362,7 @@ public class Presenter : MonoBehaviour
 
         if (_selectMoveButtonView.DestinationNo == 0)
         {
-            Debug.Log("テスト");  //SceneManager.LoadScene("ダンジョン");
+            SceneManager.LoadScene("Dungeon");
         }
     }
 }

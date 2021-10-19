@@ -8,33 +8,102 @@ using UnityEngine;
 /*システム（日付、時間、イベントフラグ）　　　を保持するクラス　シングルトン、　　セーブ時、このクラスのみ保存*/
 public class GameManager : MonoBehaviour
 {
+    //シングルトン
+    public static GameManager Instance = null;
+
+    /*------------------------------natureScene----------------------------*/
     //プレイヤーの情報を保持
-    public static PlayerStatus[] _playerStatus = new PlayerStatus[ConstValue._playerAmount];
+    public static PlayerStatus[] _playerStatus;
+    //操作中のキャラ
+    /*0:キャラ1
+      1:キャラ2*/
+    public static int _playerOperate;
+
+    public static int _playerUseSkillNo;
     //ゴールドや魔石等の共有アイテムを保持
     public static ShareItem _shareItem;
 
     //日付情報を保持
     public static DayManage _dayManage;
+    
+    /*************************************************************************/
+
+
+    /*******************************DungeonSenece*****************************/
+
+
+    /*************************************************************************/
 
     void Awake()
     {
+        Singleton();
+
+        InitializePlayerStatus();
+
+
+
+
+    }
+
+    void Start()
+    {
+
+        //初期スキルセット
+        InstantiateSkill();
+        _playerOperate = 0;
+        _playerUseSkillNo = 0;
+    }
+
+    private void Singleton()
+    {
+        if (Instance == null)
+            Instance = this;
+        else if (Instance != this)
+            Destroy(gameObject);
+
+        DontDestroyOnLoad(gameObject);
+    }
+
+    private void InitializePlayerStatus()
+    {
+        _playerStatus = new PlayerStatus[ConstValue._playerAmount];
         InitialPlayerStatusData _initialPlayerStatusData;
         _initialPlayerStatusData = Resources.Load("InitialPlayerStatusData") as InitialPlayerStatusData;
 
-        for(int i = 0; i < _playerStatus.Length; i++)
+        for (int i = 0; i < _playerStatus.Length; i++)
         {
             _playerStatus[i] = new PlayerStatus(_initialPlayerStatusData.sheets[0].list[i]._initialHealth
                                               , _initialPlayerStatusData.sheets[0].list[i]._initialHp
                                               , _initialPlayerStatusData.sheets[0].list[i]._initialMp
                                               , _initialPlayerStatusData.sheets[0].list[i]._initialAttack
                                               , _initialPlayerStatusData.sheets[0].list[i]._initialDefense
-                                              , _initialPlayerStatusData.sheets[0].list[i]._initialSpeed);
+                                              , _initialPlayerStatusData.sheets[0].list[i]._initialSpeed
+                                              , _initialPlayerStatusData.sheets[0].list[i]._initialAttackStartTime
+                                              , _initialPlayerStatusData.sheets[0].list[i]._initialAttackEndTime
+                                              , _initialPlayerStatusData.sheets[0].list[i]._initialAttackDurationTime);
         }
-        
+
 
         _shareItem = new ShareItem();
 
         _dayManage = new DayManage();
+    }
+
+    private void InstantiateSkill()
+    {
+        SkillData _skillData;
+        _skillData = Resources.Load("SkillData") as SkillData;
+        SkillScript _skillScr = new SkillScript();
+
+        //初期スキルを習得してセット
+        for (int i = 0; i < ConstValue._skillSetMax; i++)
+        {
+            for (int j = 0; j < ConstValue._playerAmount; j++)
+            {
+                _skillScr.SkillObtain(_skillData, j, i);
+                _skillScr.SkillSet(j, i, i);
+            }
+        }
     }
 }
 
