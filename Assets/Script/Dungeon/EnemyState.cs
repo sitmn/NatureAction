@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyState : CharacterStatus
 {
-    public DungeonMasterData MasterData;
     private int enemy_no;
     public EnemyState(string name)
     {
@@ -25,7 +24,7 @@ public class EnemyState : CharacterStatus
 
 
         //エクセルデータから敵のステータスを取得
-        Set_max_hp(MasterData.enemyStatusData.sheets[0].list[enemy_no].max_hp);
+        /*Set_max_hp(MasterData.enemyStatusData.sheets[0].list[enemy_no].max_hp);
         Set_hp(Get_max_hp());
         Set_max_mp(MasterData.enemyStatusData.sheets[0].list[enemy_no].max_mp);
         Set_mp(Get_max_mp());
@@ -36,7 +35,7 @@ public class EnemyState : CharacterStatus
         Set_origin_speed(MasterData.enemyStatusData.sheets[0].list[enemy_no].origin_speed);
         Set_speed(Get_speed());
         Set_technique(MasterData.enemyStatusData.sheets[0].list[enemy_no].technique);
-        Set_range(MasterData.enemyStatusData.sheets[0].list[enemy_no].range);
+        Set_range(MasterData.enemyStatusData.sheets[0].list[enemy_no].range);*/
     }
 
 

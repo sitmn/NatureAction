@@ -17,14 +17,14 @@ public class EnemyStatusData : ScriptableObject
 	public class Param
 	{
 		
-		public string name;
-		public int max_hp;
-		public int max_mp;
-		public int origin_attack;
-		public int origin_defense;
-		public int origin_speed;
-		public int technique;
-		public int range;
+		public string _enemyName;
+		public int _enemyMaxHp;
+		public int _enemyAttack;
+		public int _enemyDefense;
+		public float _enemySpeed;
+		public int _enemyAttackDurationTime;
+		public int _enemyAttackEndTime;
+		public float _enemyAttackRangeMagnification;
 	}
 }
 

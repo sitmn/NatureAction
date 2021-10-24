@@ -53,9 +53,10 @@ public class SkillData_importer : AssetPostprocessor {
 					cell = row.GetCell(0); p._skillName = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(1); p._skillAttackMagnification = (float)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(2); p._skillAttackRange = (float)(cell == null ? 0 : cell.NumericCellValue);
-					cell = row.GetCell(3); p._skillStartTime = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(3); p._skillAnimationLength = (float)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(4); p._skillEndTime = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(5); p._skillDurationTime = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(6); p._skillTypeName = (cell == null ? "" : cell.StringCellValue);
 						s.list.Add (p);
 					}
 					data.sheets.Add(s);

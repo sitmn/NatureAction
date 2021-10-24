@@ -254,28 +254,31 @@ public static class playerStatus{
 
 /*以下、宝石のステータス*/
 //前
-public class juelStatus
+public class JuelStatus
 {
     public int juel_HP;             //宝石のHP
+    
     public int juel_Attack;         //宝石の攻撃
     public int juel_AttackSpan;    //宝石の攻撃間隔（フレーム）
     public float juel_AttackSpeed;   //攻撃弾の速さ
+    private int _juelAttackDurationTime; //攻撃時間（オブジェクトが消えるまでの時間）
+    public int JuelAttackDurationTime => _juelAttackDurationTime;
 }
 
 
 //前
-public class rubyStatus : juelStatus {
+public class rubyStatus : JuelStatus {
 
     public rubyStatus(){
         juel_HP = 10;
-        juel_Attack = 3;
+        juel_Attack = 20;
         juel_AttackSpan = 200;
         juel_AttackSpeed = 0.2f;
     }
 }
 
 //前
-public class aquamarineStatus : juelStatus
+public class aquamarineStatus : JuelStatus
 {
 
     public aquamarineStatus()

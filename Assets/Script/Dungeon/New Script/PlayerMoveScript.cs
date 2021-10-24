@@ -9,14 +9,14 @@ public class PlayerMoveScript : MonoBehaviour
     private Transform[] _playerTr;
     //プレイヤーのキャラクターコントローラー
     [SerializeField]
-    private CharacterController[] _playerCharController;
+    public CharacterController[] _playerCharController;
 
     //プレイヤーの移動
     public void PlayerMove(Vector3 _moveVector3)
     {
         _moveVector3 = Time.deltaTime * _moveVector3 * ConstValue._playerSpeed;
 
-        _playerCharController[GameManager._playerOperate].Move(_moveVector3);
+        _playerCharController[GameManager.Instance.PlayerOperate].Move(_moveVector3);
     }
     //プレイヤーの回転
     public void PlayerRotate(Vector3 _rotateVector3)
@@ -34,8 +34,8 @@ public class PlayerMoveScript : MonoBehaviour
         }
 
         //最終回転姿勢の途中の姿勢
-        _playerRotate = Quaternion.Slerp(_playerTr[GameManager._playerOperate].rotation, _playerRotate, _rotateSpeed);
+        _playerRotate = Quaternion.Slerp(_playerTr[GameManager.Instance.PlayerOperate].rotation, _playerRotate, _rotateSpeed);
         //playerへ反映
-        _playerTr[GameManager._playerOperate].rotation = _playerRotate;
+        _playerTr[GameManager.Instance.PlayerOperate].rotation = _playerRotate;
     }
 }

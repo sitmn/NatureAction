@@ -49,7 +49,7 @@ public class Presenter : MonoBehaviour
     [SerializeField]
     private StatusValueModel _statusValueModel;
     [SerializeField]
-    private HPBarModel _hpBarModel;
+    private HealthBarModel _hpBarModel;
     [SerializeField]
     private MagicStoneAmountModel _magicStoneAmountModel;
 
@@ -332,7 +332,7 @@ public class Presenter : MonoBehaviour
     public void NextDayStart()
     {
         //日付を次の日に更新
-        GameManager._dayManage.Day = 1;
+        GameManager.Instance._dayManage.Day = 1;
         DayText.SetText();
 
         _buttonActiveFlag = true;

@@ -148,12 +148,12 @@ public class TrainingCalculateScript
             {
                 _trainingChangeHealthPointArray[i] = _trainingPointData.sheets[0].list[(int)_trainingNoArray[i]]._tired;
 
-                if (GameManager._playerStatus[i].Health - _trainingChangeHealthPointArray[i] <= 0)
+                if (GameManager.Instance._playerStatus[i].Health - _trainingChangeHealthPointArray[i] <= 0)
                 {
-                    _trainingChangeHealthPointArray[i] = GameManager._playerStatus[i].Health;
-                }else if (GameManager._playerStatus[i].Health - _trainingChangeHealthPointArray[i] >= GameManager._playerStatus[i].MaxHealth)
+                    _trainingChangeHealthPointArray[i] = GameManager.Instance._playerStatus[i].Health;
+                }else if (GameManager.Instance._playerStatus[i].Health - _trainingChangeHealthPointArray[i] >= GameManager.Instance._playerStatus[i].MaxHealth)
                 {
-                    _trainingChangeHealthPointArray[i] = GameManager._playerStatus[i].Health - GameManager._playerStatus[i].MaxHealth;
+                    _trainingChangeHealthPointArray[i] = GameManager.Instance._playerStatus[i].Health - GameManager.Instance._playerStatus[i].MaxHealth;
                 }
             }
             else
@@ -195,11 +195,11 @@ public class TrainingCalculateScript
         }
 
         //各魔石消費量をTrainingStructに格納
-        _useMagicStoneStruct = new UseMagicStoneStruct((int)(GameManager._shareItem._magicStone[0].Amount * _eachMagicStoneRaito[0]),
-                                                       (int)(GameManager._shareItem._magicStone[1].Amount * _eachMagicStoneRaito[1]),
-                                                       (int)(GameManager._shareItem._magicStone[2].Amount * _eachMagicStoneRaito[2]),
-                                                       (int)(GameManager._shareItem._magicStone[3].Amount * _eachMagicStoneRaito[3]),
-                                                       (int)(GameManager._shareItem._magicStone[4].Amount * _eachMagicStoneRaito[4]));
+        _useMagicStoneStruct = new UseMagicStoneStruct((int)(GameManager.Instance._shareItem._magicStone[0].Amount * _eachMagicStoneRaito[0]),
+                                                       (int)(GameManager.Instance._shareItem._magicStone[1].Amount * _eachMagicStoneRaito[1]),
+                                                       (int)(GameManager.Instance._shareItem._magicStone[2].Amount * _eachMagicStoneRaito[2]),
+                                                       (int)(GameManager.Instance._shareItem._magicStone[3].Amount * _eachMagicStoneRaito[3]),
+                                                       (int)(GameManager.Instance._shareItem._magicStone[4].Amount * _eachMagicStoneRaito[4]));
 
         return _useMagicStoneStruct;
     }

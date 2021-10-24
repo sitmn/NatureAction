@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffc8eec2b0c964f4cbb52c4ea09c1ca2, type: 3}
+  m_Name: JuelStatusData
+  m_EditorClassIdentifier: 
+  sheets:
+  - name: Sheet1
+    list:
+    - _juelName: ruby
+      _juelMaxHp: 30
+      _juelAttack: 50
+      _juelDefense: 20
+      _juelAttackDurationTime: 5000
+      _juelAttackSpeed: 20
+      _juelAttackSpan: 2000
+      _juelAttackRangeMagnification: 1.5
+    - _juelName: aquamarine
+      _juelMaxHp: 50
+      _juelAttack: 30
+      _juelDefense: 5
+      _juelAttackDurationTime: 3000
+      _juelAttackSpeed: 5
+      _juelAttackSpan: 2000
+      _juelAttackRangeMagnification: 2

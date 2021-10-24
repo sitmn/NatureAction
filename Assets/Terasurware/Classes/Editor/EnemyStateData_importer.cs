@@ -8,8 +8,8 @@ using NPOI.XSSF.UserModel;
 using NPOI.SS.UserModel;
 
 public class EnemyStateData_importer : AssetPostprocessor {
-	private static readonly string filePath = "Assets/Excel/EnemyStateData.xls";
-	private static readonly string exportPath = "Assets/Excel/EnemyStateData.asset";
+	private static readonly string filePath = "Assets/Resources/EnemyStateData.xls";
+	private static readonly string exportPath = "Assets/Resources/EnemyStateData.asset";
 	private static readonly string[] sheetNames = { "Sheet1", };
 	
 	static void OnPostprocessAllAssets (string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
@@ -50,14 +50,14 @@ public class EnemyStateData_importer : AssetPostprocessor {
 						
 						EnemyStatusData.Param p = new EnemyStatusData.Param ();
 						
-					cell = row.GetCell(0); p.name = (cell == null ? "" : cell.StringCellValue);
-					cell = row.GetCell(1); p.max_hp = (int)(cell == null ? 0 : cell.NumericCellValue);
-					cell = row.GetCell(2); p.max_mp = (int)(cell == null ? 0 : cell.NumericCellValue);
-					cell = row.GetCell(3); p.origin_attack = (int)(cell == null ? 0 : cell.NumericCellValue);
-					cell = row.GetCell(4); p.origin_defense = (int)(cell == null ? 0 : cell.NumericCellValue);
-					cell = row.GetCell(5); p.origin_speed = (int)(cell == null ? 0 : cell.NumericCellValue);
-					cell = row.GetCell(6); p.technique = (int)(cell == null ? 0 : cell.NumericCellValue);
-					cell = row.GetCell(7); p.range = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(0); p._enemyName = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(1); p._enemyMaxHp = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(2); p._enemyAttack = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(3); p._enemyDefense = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(4); p._enemySpeed = (float)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(5); p._enemyAttackDurationTime = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(6); p._enemyAttackEndTime = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(7); p._enemyAttackRangeMagnification = (float)(cell == null ? 0 : cell.NumericCellValue);
 						s.list.Add (p);
 					}
 					data.sheets.Add(s);

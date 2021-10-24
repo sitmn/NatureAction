@@ -4,36 +4,31 @@ using UnityEngine;
 
 
 /*索敵用コライダーのスクリプト、フラグONOFFのみ*/
-public class juelSearch : MonoBehaviour
+public class JuelSearch : MonoBehaviour
 {
-    private JuelController juelController;
+    private JuelController _juelController;
 
     // Start is called before the first frame update
     void Start()
     {
-        juelController = transform.parent.gameObject.GetComponent<JuelController>();
+        _juelController = transform.parent.gameObject.GetComponent<JuelController>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    //プレイヤーが離れるのを検知
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
-            juelController.searchEnemyBool = false;
+            _juelController._searchEnemyFlag = false;
         }
     }
 
+    //プレイヤーの接近を検知
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
-            Debug.Log("bbbb");
-            juelController.searchEnemyBool = true;
+            _juelController._searchEnemyFlag = true;
         }
     }
 }

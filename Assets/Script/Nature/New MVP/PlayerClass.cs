@@ -1,23 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class NewBehaviourScript : MonoBehaviour
-{
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-}
+using UniRx;
 
 //プレイヤーステータスクラス
 public class PlayerStatus
@@ -68,11 +52,16 @@ public class PlayerStatus
             else _maxHp = 1;
         }
     }
-    private int _hp;
-    public int Hp
+    private ReactiveProperty<int> _hp;
+    public ReactiveProperty<int> Hp
     {
         get { return _hp; }
-        set { _hp = value; }
+        set
+        {
+            if (value.Value > _maxHp) _hp.Value = _maxHp;
+            else if (value.Value < 0) _hp.Value = value.Value;
+            else _hp.Value = 0;
+        }
     }
     private int _maxMp;
     public int MaxMp
@@ -84,11 +73,16 @@ public class PlayerStatus
             else _maxMp = 1;
         }
     }
-    private int _mp;
-    public int MP
+    private ReactiveProperty<int> _mp;
+    public ReactiveProperty<int> MP
     {
         get { return _mp; }
-        set { _mp = value; }
+        set
+        {
+            if (value.Value > _maxMp) _mp.Value = _maxMp;
+            else if (value.Value < 0) _mp.Value = value.Value;
+            else _mp.Value = 0;
+        }
     }
     private int _attack;
     public int Attack
@@ -120,6 +114,17 @@ public class PlayerStatus
             else _speed = 1;
         }
     }
+    private int _playerUseSkillNo;
+    public int PlayerUseSkillNo
+    {
+        get { return _playerUseSkillNo; }
+        set
+        {
+            if (value <= 2) _playerUseSkillNo = value;
+            else { _playerUseSkillNo = 0; }
+        }
+    }
+
 
     public List<Skill> _playerSkillList;
     public Skill[] _playerSkill = new Skill[ConstValue._skillSetMax];
@@ -137,18 +142,21 @@ public class PlayerStatus
                       , int _initialAttackEndTime
                       , int _initialAttackDurationTime)
     {
+        
+
         _maxHealth = _initialHealth;
         _health = _maxHealth;
         _maxHp = _initialHp;
-        _hp = _maxHp;
+        _hp = new ReactiveProperty<int>(_maxHp);
         _maxMp = _initialMp;
-        _mp = _maxMp;
+        _mp = new ReactiveProperty<int>(_maxMp);
         _attack = _initialAttack;
         _defense = _initialDefense;
         _speed = _initialSpeed;
         _attackStartTime = _initialAttackStartTime;
         _attackEndTime = _initialAttackEndTime;
         _attackDurationTime = _initialAttackDurationTime;
+        _playerUseSkillNo = 0;
 
         _playerSkillList = new List<Skill>();
         _playerItemList = new List<Item>();
@@ -160,55 +168,53 @@ public class PlayerStatus
 public class Skill
 {
     private string _skillName;
-    public string SkillName
-    {
-        get { return _skillName; }
-        set { _skillName = value; }
-    }
+    public string SkillName => _skillName;
     private float _skillAttackMagnification;
-    public float SkillAttackMagnification
-    {
-        get { return _skillAttackMagnification; }
-        set { _skillAttackMagnification = value; }
-    }
-    private int _skillStartTime;
-    public int SkillStartTime
-    {
-        get { return _skillStartTime; }
-        set { _skillStartTime = value; }
-    }
+    public float SkillAttackMagnification => _skillAttackMagnification;
+    //private int _skillStartTime;
+    //public int SkillStartTime => _skillStartTime;
+    //アニメーション長さをデフォルト値から短縮
+    private float _skillAnimationLength;
+    public float SkillAnimationLength => _skillAnimationLength;
     private int _skillEndTime;
-    public int SkillEndTime
-    {
-        get { return _skillEndTime; }
-        set { _skillEndTime = value; }
-    }
+    public int SkillEndTime => _skillEndTime;
     private int _skillDurationTime;
-    public int SkillDurationTime
-    {
-        get { return _skillDurationTime; }
-        set { _skillDurationTime = value; }
-    }
+    public int SkillDurationTime => _skillDurationTime;
     private float _skillAttackRange;
-    public float SkillAttackRange
-    {
-        get { return _skillAttackRange; }
-        set { _skillAttackRange = value; }
-    }
+    public float SkillAttackRange => _skillAttackRange;
+    private string _skillTypeName;
+    public string SkillTypeName => _skillTypeName;
+    private AnimationClip _skillAnimation;
+    public AnimationClip SkillAnimation => _skillAnimation;
+    private GameObject _skillColliderObj;
+    public GameObject SkillColliderObj => _skillColliderObj;
+    private Sprite _skillImage;
+    public Sprite SkillImage => _skillImage;
 
     public Skill(string _skillName,
                  float _skillAttackMagnification,
-                 int _skillStartTime,
+                 float _skillAnimationLength,
                  int _skillEndTime,
                  int _skillDurationTime,
-                 float _skillAttackRange){
+                 float _skillAttackRange,
+                 string _skillTypeName,
+                 AnimationClip _skillAnimation,
+                 GameObject _skillColliderObj,
+                 Sprite _skillImage)
+    {
 
         this._skillName = _skillName;
         this._skillAttackMagnification = _skillAttackMagnification;
-        this._skillStartTime = _skillStartTime;
+        //this._skillStartTime = _skillStartTime;
+        this._skillAnimationLength = _skillAnimationLength;
         this._skillEndTime = _skillEndTime;
         this._skillDurationTime = _skillDurationTime;
         this._skillAttackRange = _skillAttackRange;
+        this._skillTypeName = _skillTypeName;
+        this._skillAnimation = _skillAnimation;
+        this._skillColliderObj = _skillColliderObj;
+        this._skillColliderObj = _skillColliderObj;
+        this._skillImage = _skillImage;
     }
 }
 

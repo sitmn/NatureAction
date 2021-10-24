@@ -13,18 +13,25 @@ public class GameManager : MonoBehaviour
 
     /*------------------------------natureScene----------------------------*/
     //プレイヤーの情報を保持
-    public static PlayerStatus[] _playerStatus;
+    public PlayerStatus[] _playerStatus;
     //操作中のキャラ
     /*0:キャラ1
       1:キャラ2*/
-    public static int _playerOperate;
+    private int _playerOperate;
+    public int PlayerOperate { 
+        get { return _playerOperate; }
+        set{
+                if (value < ConstValue._playerAmount) _playerOperate = value;
+                else { _playerOperate = 0; }
+           }
+    }
 
-    public static int _playerUseSkillNo;
+    
     //ゴールドや魔石等の共有アイテムを保持
-    public static ShareItem _shareItem;
+    public ShareItem _shareItem;
 
     //日付情報を保持
-    public static DayManage _dayManage;
+    public DayManage _dayManage;
     
     /*************************************************************************/
 
@@ -40,7 +47,9 @@ public class GameManager : MonoBehaviour
 
         InitializePlayerStatus();
 
-
+        //初期スキルセット
+        InstantiateSkill();
+        _playerOperate = 0;
 
 
     }
@@ -48,10 +57,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
 
-        //初期スキルセット
-        InstantiateSkill();
-        _playerOperate = 0;
-        _playerUseSkillNo = 0;
     }
 
     private void Singleton()

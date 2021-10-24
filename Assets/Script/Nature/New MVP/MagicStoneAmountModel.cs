@@ -22,10 +22,10 @@ public class MagicStoneAmountModel : MonoBehaviour
         for(int i = 0;i < ConstValue._stoneKind; i++)
         {
             //魔石を使用する場合はテキストを赤にして、消費後の数を表示
-            DecreaseDisplay(_eachMagicStoneAmountText[i], GameManager._shareItem._magicStone[i].Amount, _useMagicStoneStruct._useMagicStone[i]);
+            DecreaseDisplay(_eachMagicStoneAmountText[i], GameManager.Instance._shareItem._magicStone[i].Amount, _useMagicStoneStruct._useMagicStone[i]);
         }
 
-        DecreaseDisplay(_sumMagicStoneAmountText, GameManager._shareItem.SumMagicStone(), _useMagicStoneStruct._useSumMagicStone);
+        DecreaseDisplay(_sumMagicStoneAmountText, GameManager.Instance._shareItem.SumMagicStone(), _useMagicStoneStruct._useSumMagicStone);
     }
 
 
@@ -51,7 +51,7 @@ public class MagicStoneAmountModel : MonoBehaviour
     {
         for(int i = 0; i < ConstValue._stoneKind; i++)
         {
-            GameManager._shareItem._magicStone[i].Amount = GameManager._shareItem._magicStone[i].Amount - _useMagicStoneStruct._useMagicStone[i];
+            GameManager.Instance._shareItem._magicStone[i].Amount = GameManager.Instance._shareItem._magicStone[i].Amount - _useMagicStoneStruct._useMagicStone[i];
         }
 
         SetMagicStoneText();
@@ -62,11 +62,11 @@ public class MagicStoneAmountModel : MonoBehaviour
     {
         for(int i= 0; i < ConstValue._stoneKind; i++)
         {
-            _eachMagicStoneAmountText[i].text = GameManager._shareItem._magicStone[i].Amount.ToString();
+            _eachMagicStoneAmountText[i].text = GameManager.Instance._shareItem._magicStone[i].Amount.ToString();
             _eachMagicStoneAmountText[i].color = new Color(ConstValue._normalColorR, ConstValue._normalColorG, ConstValue._normalColorB, ConstValue._normalColorA);
         }
 
-        _sumMagicStoneAmountText.text = GameManager._shareItem.SumMagicStone().ToString();
+        _sumMagicStoneAmountText.text = GameManager.Instance._shareItem.SumMagicStone().ToString();
         _sumMagicStoneAmountText.color = new Color(ConstValue._normalColorR, ConstValue._normalColorG, ConstValue._normalColorB, ConstValue._normalColorA);
     }
 }

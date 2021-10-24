@@ -48,7 +48,7 @@ public class InputPlayerProvider : MonoBehaviour, IInputPlayerProvider
                 if (x)
                 {
                     //他のイベント発行を無効にし、攻撃実行
-                    UniTask _noWait = CoolTimeSet(GameManager._playerStatus[GameManager._playerOperate].AttackEndTime);
+                    UniTask _noWait = CoolTimeSet(GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].AttackEndTime);
                     _attack.OnNext(Unit.Default);
                 }
             }
@@ -62,9 +62,9 @@ public class InputPlayerProvider : MonoBehaviour, IInputPlayerProvider
             .Subscribe((x) => {
                 if (x)
                 {
-                    Debug.Log(GameManager._playerStatus[GameManager._playerOperate]._playerSkill[GameManager._playerUseSkillNo]);
                     //他のイベント発行を無効にし、技実行
-                    UniTask _noWait = CoolTimeSet(GameManager._playerStatus[GameManager._playerOperate]._playerSkill[GameManager._playerUseSkillNo].SkillEndTime);
+                    UniTask _noWait = CoolTimeSet(GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate]
+                                                    ._playerSkill[GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].PlayerUseSkillNo].SkillEndTime);
                     _skill.OnNext(Unit.Default);
                 }
             }

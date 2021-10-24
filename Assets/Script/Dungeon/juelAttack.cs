@@ -1,94 +1,65 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
 
-//攻撃にアタッチするスクリプト
-public class juelAttack : MonoBehaviour
+//宝石の攻撃、ダメージや攻撃Objのスピード
+public class JuelAttack : MonoBehaviour
 {
-    private int deleteCount;
-    private int count;
-
-    private float rotation_y;
-
-    private JuelController juelController;
+    private JuelController _juelController;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        deleteCount = 1000;
-        count = 0;
-
-        rotation_y = transform.rotation.eulerAngles.y;
-
-        juelController = transform.parent.gameObject.GetComponent<JuelController>();
-            
+        _juelController = transform.parent.gameObject.GetComponent<JuelController>();
+        DeleteAttack();
     }
+
+    //攻撃オブジェクトを一定時間で削除
+    private async void DeleteAttack()
+    {
+        await UniTask.Delay(EnemyStatus._juelStatusData.sheets[0].list[_juelController._juelNo]._juelAttackDurationTime);
+        Destroy(gameObject);
+    }
+
+
 
     // Update is called once per frame
     void Update()
     {
-        
-
-        count++;
-        Debug.Log(rotation_y + "YY");
-        if(rotation_y == 0)
+        if(transform.rotation.y == 0)
         {
-            Debug.Log("A");
-            transform.position += new Vector3(juelController.juelStatus.juel_AttackSpeed, 0, 0);
-        }else if (rotation_y == 90f)
+            transform.position += new Vector3(EnemyStatus._juelStatusData.sheets[0].list[_juelController._juelNo]._juelAttackSpeed, 0, 0);
+        }else if (transform.rotation.y == 90f)
         {
-            Debug.Log("B");
-            transform.position += new Vector3(0, 0, -juelController.juelStatus.juel_AttackSpeed);
+            transform.position += new Vector3(0, 0, -EnemyStatus._juelStatusData.sheets[0].list[_juelController._juelNo]._juelAttackSpeed);
         }
-        else if (rotation_y == 180f)
+        else if (transform.rotation.y == 180f)
         {
-            Debug.Log("C");
-            transform.position += new Vector3(-juelController.juelStatus.juel_AttackSpeed, 0, 0);
+            transform.position += new Vector3(-EnemyStatus._juelStatusData.sheets[0].list[_juelController._juelNo]._juelAttackSpeed, 0, 0);
         }
-        else if (rotation_y == 270f)
+        else if (transform.rotation.y == 270f)
         {
-            Debug.Log("D");
-            transform.position += new Vector3(0, 0, juelController.juelStatus.juel_AttackSpeed);
-        }
-
-        if(count > deleteCount)
-        {
-            Destroy(gameObject);
+            transform.position += new Vector3(0, 0, EnemyStatus._juelStatusData.sheets[0].list[_juelController._juelNo]._juelAttackSpeed);
         }
     }
 
 
-    //攻撃ヒット時
-    private void juelEnemyAttackDamage(EnemyController enemyController)
+    private void JuelPlayerAttackDamage()
     {
-        int damage = juelController.juelStatus.juel_Attack - enemyController.thisEnemyState.Get_defense();
-
-        enemyController.damageEnemy(damage);
-    }
-
-    private void juelPlayerAttackDamage(PlayerController2 playerController)
-    {
-        int damage = transform.parent.gameObject.GetComponent<JuelController>().juelStatus.juel_Attack - playerStatus.player_Defense;
-
-        //playerController.damagePlayer(damage);
+        Debug.Log("プレイヤーダメージ");
+        int damage = EnemyStatus._juelStatusData.sheets[0].list[_juelController._juelNo]._juelAttack - GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].Defense;
+        if (damage <= 0) damage = 1;
+        GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].Hp.Value -= damage;
     }
 
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
-            Debug.Log("aaaaa");
-            juelPlayerAttackDamage(other.gameObject.GetComponent<PlayerController2>());
+            JuelPlayerAttackDamage();
             Destroy(gameObject);
         }
-        else if(other.gameObject.tag == "Enemy")
-        {
-            juelEnemyAttackDamage(other.gameObject.GetComponent<EnemyController>());
-            Destroy(gameObject);
-        }
-
-        
-        
     }
 }

@@ -19,6 +19,6 @@ public class DayValueModel : MonoBehaviour
 
     public void SetText()
     {
-        _dayText.text = GameManager._dayManage.Day.ToString();
+        _dayText.text = GameManager.Instance._dayManage.Day.ToString();
     }
 }

@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
-  m_ObjectHideFlags: 8
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -16,26 +16,42 @@ MonoBehaviour:
   - name: Sheet1
     list:
     - _skillName: SkillName1
-      _skillAttackMagnification: 1.5
-      _skillAttackRange: 1.4
-      _skillStartTime: 1000
-      _skillEndTime: 1800
-      _skillDurationTime: 500
-    - _skillName: SkillName2
-      _skillAttackMagnification: 2
-      _skillAttackRange: 1.3
-      _skillStartTime: 20
-      _skillEndTime: 200
-      _skillDurationTime: 5
-    - _skillName: SkillName3
-      _skillAttackMagnification: 0.8
-      _skillAttackRange: 1.6
-      _skillStartTime: 10
-      _skillEndTime: 30
-      _skillDurationTime: 2000
-    - _skillName: SkillName4
-      _skillAttackMagnification: 1.3
+      _skillAttackMagnification: 1.2
       _skillAttackRange: 1.2
-      _skillStartTime: 20
+      _skillAnimationLength: 1
+      _skillEndTime: 1000
+      _skillDurationTime: 300
+      _skillTypeName: SkillTypeA
+      _skillAnimation: {fileID: 7400000, guid: 6b0522ca9a4adbf4f9779365eb30579f, type: 2}
+      _skillColliderObj: {fileID: 7243792990081694938, guid: 85bdb4b5d6aeef146bccef248ce8bd04, type: 3}
+      _skillImage: {fileID: 21300000, guid: adfb16cdb2353684bbf44eb7e5b7128b, type: 3}
+    - _skillName: SkillName2
+      _skillAttackMagnification: 0.8
+      _skillAttackRange: 0.9
+      _skillAnimationLength: 1.2
+      _skillEndTime: 200
+      _skillDurationTime: 100
+      _skillTypeName: SkillTypeB
+      _skillAnimation: {fileID: 7400000, guid: 323005ca4531c094d905fbc272625f29, type: 2}
+      _skillColliderObj: {fileID: 2063460142824272507, guid: 9c79abcff59cffc44933b0cb020b43de, type: 3}
+      _skillImage: {fileID: 21300000, guid: 8cc7ca0e29ced7b4f84e8c4ef7deb28b, type: 3}
+    - _skillName: SkillName3
+      _skillAttackMagnification: 1.5
+      _skillAttackRange: 1.3
+      _skillAnimationLength: 0.7
+      _skillEndTime: 1800
+      _skillDurationTime: 1200
+      _skillTypeName: SkillTypeC
+      _skillAnimation: {fileID: 7400000, guid: 2ecb4a9fef1562d48907ddc6aea61aa9, type: 2}
+      _skillColliderObj: {fileID: 545377189599824813, guid: 6e2b12adb3c5e844ebc092d89ec10e45, type: 3}
+      _skillImage: {fileID: 21300000, guid: 2a1265ae4655d044e9c1557405696861, type: 3}
+    - _skillName: SkillName4
+      _skillAttackMagnification: 2
+      _skillAttackRange: 1.2
+      _skillAnimationLength: 1
       _skillEndTime: 50
       _skillDurationTime: 100
+      _skillTypeName: SkillTypeD
+      _skillAnimation: {fileID: 7400000, guid: 5087c792abb5f444da2b5aa7f0b9b0d4, type: 2}
+      _skillColliderObj: {fileID: 0}
+      _skillImage: {fileID: 21300000, guid: de226bd492b80a041899eee9937a2c37, type: 3}

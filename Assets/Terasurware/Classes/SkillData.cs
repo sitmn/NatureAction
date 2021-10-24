@@ -20,9 +20,13 @@ public class SkillData : ScriptableObject
 		public string _skillName;
 		public float _skillAttackMagnification;
 		public float _skillAttackRange;
-		public int _skillStartTime;
+		public float _skillAnimationLength;
 		public int _skillEndTime;
 		public int _skillDurationTime;
+		public string _skillTypeName;
+		public AnimationClip _skillAnimation;
+		public GameObject _skillColliderObj;
+		public Sprite _skillImage;
 	}
 }
 
