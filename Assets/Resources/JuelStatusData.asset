@@ -16,18 +16,20 @@ MonoBehaviour:
   - name: Sheet1
     list:
     - _juelName: ruby
-      _juelMaxHp: 30
+      _juelMaxHp: 300
       _juelAttack: 50
       _juelDefense: 20
       _juelAttackDurationTime: 5000
-      _juelAttackSpeed: 20
-      _juelAttackSpan: 2000
-      _juelAttackRangeMagnification: 1.5
+      _juelAttackSpeed: 0.1
+      _juelAttackSpan: 1500
+      _juelAttackRangeMagnification: 1
+      _juelSearchRange: 0
     - _juelName: aquamarine
-      _juelMaxHp: 50
+      _juelMaxHp: 500
       _juelAttack: 30
       _juelDefense: 5
       _juelAttackDurationTime: 3000
-      _juelAttackSpeed: 5
-      _juelAttackSpan: 2000
-      _juelAttackRangeMagnification: 2
+      _juelAttackSpeed: 0.01
+      _juelAttackSpan: 1000
+      _juelAttackRangeMagnification: 1.5
+      _juelSearchRange: 0

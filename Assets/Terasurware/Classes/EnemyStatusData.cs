@@ -21,10 +21,13 @@ public class EnemyStatusData : ScriptableObject
 		public int _enemyMaxHp;
 		public int _enemyAttack;
 		public int _enemyDefense;
-		public float _enemySpeed;
+		public int _enemySpeed;
+		public int _enemyDistance;
 		public int _enemyAttackDurationTime;
 		public int _enemyAttackEndTime;
-		public float _enemyAttackRangeMagnification;
+		public float _enemyAttackSpeed;
+		public int _enemyAttackRange;
+		public int _enemySearchRange;
 	}
 }
 

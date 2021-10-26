@@ -49,8 +49,8 @@ public static class ConstValue
 
     /*****************DungeonScene************************/
     //キャラクターの移動と回転速度
-    public const float _rotateSpeed = 10f;
-    public const float _playerSpeed = 10f;
+    public const float _rotateSpeed = 15f;
+    public const float _playerSpeed = 8f;
 
     //カメラの回転速度
     public const float _cameraRotateSpeed = 1f;
@@ -72,7 +72,6 @@ public static class ConstValue
     //キャラのスキルアイコン間距離
     public const float _skillIconDistance = 80f;
 
-
-    //宝石の攻撃削除時間
-    public const int _juelAttackDeleteCount = 1000;
+    //敵の停止中回転速度
+    public const float _enemyrotateSpeed = 3f;
 }

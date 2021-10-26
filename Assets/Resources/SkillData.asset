@@ -43,7 +43,7 @@ MonoBehaviour:
       _skillDurationTime: 1200
       _skillTypeName: SkillTypeC
       _skillAnimation: {fileID: 7400000, guid: 2ecb4a9fef1562d48907ddc6aea61aa9, type: 2}
-      _skillColliderObj: {fileID: 545377189599824813, guid: 6e2b12adb3c5e844ebc092d89ec10e45, type: 3}
+      _skillColliderObj: {fileID: 5416963710049493973, guid: 6e2b12adb3c5e844ebc092d89ec10e45, type: 3}
       _skillImage: {fileID: 21300000, guid: 2a1265ae4655d044e9c1557405696861, type: 3}
     - _skillName: SkillName4
       _skillAttackMagnification: 2

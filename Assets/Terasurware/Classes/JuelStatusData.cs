@@ -25,6 +25,7 @@ public class JuelStatusData : ScriptableObject
 		public float _juelAttackSpeed;
 		public int _juelAttackSpan;
 		public float _juelAttackRangeMagnification;
+		public int _juelSearchRange;
 	}
 }
 

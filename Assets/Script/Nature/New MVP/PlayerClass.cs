@@ -53,13 +53,17 @@ public class PlayerStatus
         }
     }
     private ReactiveProperty<int> _hp;
-    public ReactiveProperty<int> Hp
+    public ReactiveProperty<int> ReactiveHp { 
+        get { return _hp; } 
+        set { _hp = value; } 
+    }
+    public int Hp
     {
-        get { return _hp; }
+        get { return _hp.Value; }
         set
         {
-            if (value.Value > _maxHp) _hp.Value = _maxHp;
-            else if (value.Value < 0) _hp.Value = value.Value;
+            if (value > _maxHp) _hp.Value = _maxHp;
+            else if (value > 0) _hp.Value = value;
             else _hp.Value = 0;
         }
     }
@@ -74,13 +78,17 @@ public class PlayerStatus
         }
     }
     private ReactiveProperty<int> _mp;
-    public ReactiveProperty<int> MP
+    public ReactiveProperty<int> ReactiveMp { 
+        get { return _mp; } 
+        set { _mp = value; } 
+    }
+    public int MP
     {
-        get { return _mp; }
+        get { return _mp.Value; }
         set
         {
-            if (value.Value > _maxMp) _mp.Value = _maxMp;
-            else if (value.Value < 0) _mp.Value = value.Value;
+            if (value > _maxMp) _mp.Value = _maxMp;
+            else if (value > 0) _mp.Value = value;
             else _mp.Value = 0;
         }
     }

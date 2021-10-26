@@ -58,6 +58,7 @@ public class JuelStatusData_importer : AssetPostprocessor {
 					cell = row.GetCell(5); p._juelAttackSpeed = (float)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(6); p._juelAttackSpan = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(7); p._juelAttackRangeMagnification = (float)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(8); p._juelSearchRange = (int)(cell == null ? 0 : cell.NumericCellValue);
 						s.list.Add (p);
 					}
 					data.sheets.Add(s);

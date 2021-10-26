@@ -8,6 +8,7 @@ TagManager:
   - Stage
   - Juel
   - searchArea
+  - PlayerAttack
   layers:
   - Default
   - TransparentFX
