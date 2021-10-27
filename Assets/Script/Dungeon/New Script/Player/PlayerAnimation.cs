@@ -26,9 +26,9 @@ public class PlayerAnimation : MonoBehaviour
 
     private void OverrideAnimationClipSet()
     {
-            _animatorOverrideController = new AnimatorOverrideController();
-            _animatorOverrideController.runtimeAnimatorController = _playerAnimation.runtimeAnimatorController;
-            _playerAnimation.runtimeAnimatorController = _animatorOverrideController;
+        _animatorOverrideController = new AnimatorOverrideController();
+        _animatorOverrideController.runtimeAnimatorController = _playerAnimation.runtimeAnimatorController;
+        _playerAnimation.runtimeAnimatorController = _animatorOverrideController;
     }
 
     public void MoveAnimation(int PlayerOperate, bool _animationBool)
@@ -36,36 +36,20 @@ public class PlayerAnimation : MonoBehaviour
         _playerAnimation.SetBool("move", _animationBool);
     }
 
-    public void AttackAnimation(int PlayerOperate)
+    public void AttackAnimation(int _playerOperate)
     {
         _playerAnimation.SetTrigger("AttackTri");
     }
 
 
-    public void SkillAnimation(int PlayerOperate)
+    public void SkillAnimation(int _playerOperate)
     {
-        Debug.Log(GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].PlayerUseSkillNo+"No");
         _playerAnimation.SetTrigger("SkillTri");
     }
 
     public void SkillAnimationChange(PlayerStatus _playerStatus)
     {
-        ChangeSkillCollider(_playerStatus);
         ChangeClip(_playerStatus);
-        //ChangeDisplay();
-    }
-
-    //攻撃用コライダーの入れ替え(既についているものを削除して、新しいオブジェクトを生成)
-    private void ChangeSkillCollider(PlayerStatus _playerStatus)
-    {
-        Destroy(_skillColliderObj);
-        _skillColliderObj = Instantiate(_playerStatus._playerSkill[_playerStatus.PlayerUseSkillNo].SkillColliderObj, this.transform.position + new Vector3(0, 0.5f, 0), this.transform.rotation * Quaternion.AngleAxis(90f, Vector3.right));
-        _skillColliderObj.transform.parent = this.gameObject.transform;
-        if(_skillColliderObj.name != "SkillTypeC(Clone)")
-        {
-            _skillColliderObj.transform.localPosition += new Vector3(0, 0, 1);
-        }
-        _skillColliderObj.SetActive(false);
     }
 
     //使用スキルに応じたアニメーションクリップを差し替え
@@ -94,23 +78,29 @@ public class PlayerAnimation : MonoBehaviour
 
     /***********アニメーションが呼び出すメソッド*****************/
 
-    
+
     //攻撃実行
-    public async UniTask AttackStart()
+    public void AttackStart()
     {
-        _attackColliderObj.SetActive(true);
-        await UniTask.Delay(TimeSpan.FromMilliseconds(
-            GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].AttackDurationTime));
-        _attackColliderObj.SetActive(false);
+        GameObject _attackObj = Instantiate(GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate]._attackColliderObj, transform.forward, Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0));
+        //弾の大きさに応じて敵から離れた位置に弾を生成
+        _attackObj.transform.position = transform.position + transform.forward + new Vector3(0, 0.5f, 0);
     }
 
     //プレイヤーのスキル
-    public async UniTask SkillStart()
+    public void SkillStart()
     {
-        _skillColliderObj.SetActive(true);
-        await UniTask.Delay(TimeSpan.FromMilliseconds(
-            GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate]
-                       ._playerSkill[GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].PlayerUseSkillNo].SkillDurationTime));
-        _skillColliderObj.SetActive(false);
+        GameObject _skillColliderObj = Instantiate(GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate]._playerSkill[GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].PlayerUseSkillNo].SkillColliderObj, this.transform.position + new Vector3(0, 0.5f, 0), this.transform.rotation * Quaternion.AngleAxis(90f, Vector3.right));
+        
+        //SkillCのみプレイヤー中心に
+        if (_skillColliderObj.name == "SkillTypeC(Clone)") _skillColliderObj.transform.position = this.gameObject.transform.position;
+        else _skillColliderObj.transform.position = this.gameObject.transform.position + transform.forward + new Vector3(0, 0.5f, 0);
     }
+
+    /*
+    //ダメージ時の仰け反り
+    public void DamageStart()
+    {
+        _coolTimeFlag = false;
+    }*/
 }

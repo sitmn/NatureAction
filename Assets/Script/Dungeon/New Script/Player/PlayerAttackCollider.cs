@@ -1,9 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
+using System;
 
 public class PlayerAttackCollider : MonoBehaviour
 {
+    private void Start()
+    {
+        DeleteAttack();
+    }
+
+    void Update()
+    {
+        Vector3 _attackVector = Quaternion.AngleAxis(transform.rotation.eulerAngles.y - 90, Vector3.up) * Vector3.right;
+        transform.position += _attackVector * GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].AttackSpeed;
+    }
+
+    private async void DeleteAttack()
+    {
+        try
+        {
+            var token = this.GetCancellationTokenOnDestroy();
+            await UniTask.Delay(GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].AttackDurationTime, cancellationToken: token);
+            Destroy(gameObject);
+        }
+        catch (OperationCanceledException e)
+        {
+
+        }
+    }
+
+
 
     //敵へのダメージ
     private void DamageEnemy(EnemyController _enemyController)
@@ -46,14 +74,15 @@ public class PlayerAttackCollider : MonoBehaviour
             {
                 DamageEnemy(other.gameObject.GetComponent<EnemyController>());
             }
+            Destroy(gameObject);
         }
         else if (other.gameObject.tag == "Juel")
         {
-            Debug.Log("SSSS");
             if (other.gameObject.GetComponent<JuelController>() != null)
             {
                 DamageJuel(other.gameObject.GetComponent<JuelController>());
             }
+            Destroy(gameObject);
         }
     }
 }

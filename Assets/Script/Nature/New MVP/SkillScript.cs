@@ -9,11 +9,13 @@ public class SkillScript
     public void SkillObtain(SkillData _skillData, int _playerNo, int _skillNo)
     {
         GameManager.Instance._playerStatus[_playerNo]._playerSkillList.Add(new Skill(_skillData.sheets[0].list[_skillNo]._skillName,
+                                                                            _skillData.sheets[0].list[_skillNo]._skillMP,
                                                                             _skillData.sheets[0].list[_skillNo]._skillAttackMagnification,
                                                                             _skillData.sheets[0].list[_skillNo]._skillAnimationLength,
                                                                             _skillData.sheets[0].list[_skillNo]._skillEndTime,
                                                                             _skillData.sheets[0].list[_skillNo]._skillDurationTime,
                                                                             _skillData.sheets[0].list[_skillNo]._skillAttackRange,
+                                                                            _skillData.sheets[0].list[_skillNo]._skillSpeed,
                                                                             _skillData.sheets[0].list[_skillNo]._skillTypeName,
                                                                             _skillData.sheets[0].list[_skillNo]._skillAnimation,
                                                                             _skillData.sheets[0].list[_skillNo]._skillColliderObj,

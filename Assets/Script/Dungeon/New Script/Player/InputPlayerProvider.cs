@@ -58,7 +58,7 @@ public class InputPlayerProvider : MonoBehaviour, IInputPlayerProvider
         this.UpdateAsObservable()
             .Select((_) => _inputSkill.triggered)
             .Skip(1)
-            .Where(_ => _coolTimeFlag)
+            .Where(_ => _coolTimeFlag && GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].Mp >= GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate]._playerSkill[GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].PlayerUseSkillNo]._skillMp)
             .Subscribe((x) => {
                 if (x)
                 {

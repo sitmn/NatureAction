@@ -20,6 +20,7 @@ public class JuelSearch : MonoBehaviour
     //プレイヤーが離れるのを検知
     private void OnTriggerExit(Collider other)
     {
+        Debug.Log("FFF");
         if (other.gameObject.tag == "Player")
         {
             _juelController._searchEnemyFlag = false;
@@ -29,8 +30,10 @@ public class JuelSearch : MonoBehaviour
     //プレイヤーの接近を検知
     private void OnTriggerStay(Collider other)
     {
+        Debug.Log("SSS");
         if (other.gameObject.tag == "Player")
         {
+            Debug.Log("AAA");
             _juelController._searchEnemyFlag = true;
         }
     }

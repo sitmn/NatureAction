@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private SkillIcon _playerIconScr;
     [SerializeField]
-    private HPBarModel _hpBarScr;
+    private StatusBarModel _statusBarScr;
 
     [SerializeField]
     private CinemachineVirtualCamera _camera;
@@ -75,6 +75,8 @@ public class PlayerController : MonoBehaviour
             .Skill
             .Subscribe((_) =>
             {
+                //MP消費
+                GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].Mp -= GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate]._playerSkill[GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].PlayerUseSkillNo]._skillMp;
                 _playerAnimation[GameManager.Instance.PlayerOperate].SkillAnimation(GameManager.Instance.PlayerOperate);
             }).AddTo(this);
 
@@ -152,7 +154,8 @@ public class PlayerController : MonoBehaviour
 
         _playerIconScr.SkillIconSet(GameManager.Instance.PlayerOperate);
         _playerIconScr.SelectIconMove();
-        _hpBarScr.SetHpUI(GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].Hp);
+        _statusBarScr.SetHpUI(GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].Hp, GameManager.Instance.PlayerOperate);
+        _statusBarScr.SetMpUI(GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].Mp, GameManager.Instance.PlayerOperate);
     }
 
     //オブジェクトの有効無効を切り替え、ポジションを同じに

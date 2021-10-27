@@ -85,7 +85,9 @@ public class GameManager : MonoBehaviour
                                               , _initialPlayerStatusData.sheets[0].list[i]._initialSpeed
                                               , _initialPlayerStatusData.sheets[0].list[i]._initialAttackStartTime
                                               , _initialPlayerStatusData.sheets[0].list[i]._initialAttackEndTime
-                                              , _initialPlayerStatusData.sheets[0].list[i]._initialAttackDurationTime);
+                                              , _initialPlayerStatusData.sheets[0].list[i]._initialAttackDurationTime
+                                              , _initialPlayerStatusData.sheets[0].list[i]._initialAttackSpeed
+                                              , _initialPlayerStatusData.sheets[0].list[i]._initialAttackColliderObj);
         }
 
 

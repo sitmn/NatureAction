@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
-  m_ObjectHideFlags: 8
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -24,7 +24,9 @@ MonoBehaviour:
       _initialSpeed: 10
       _initialAttackStartTime: 30
       _initialAttackEndTime: 500
-      _initialAttackDurationTime: 300
+      _initialAttackDurationTime: 250
+      _initialAttackSpeed: 0.1
+      _initialAttackColliderObj: {fileID: 7936662561959608051, guid: 291d912513411c64f9837e7832b0f862, type: 3}
     - "\u5BFE\u8C61\u30D7\u30EC\u30A4\u30E4\u30FC": Player2
       _initialHealth: 100
       _initialHp: 100
@@ -35,3 +37,5 @@ MonoBehaviour:
       _initialAttackStartTime: 30
       _initialAttackEndTime: 500
       _initialAttackDurationTime: 300
+      _initialAttackSpeed: 0.1
+      _initialAttackColliderObj: {fileID: 7936662561959608051, guid: 291d912513411c64f9837e7832b0f862, type: 3}

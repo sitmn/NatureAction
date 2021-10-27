@@ -27,6 +27,8 @@ public class InitialPlayerStatusData : ScriptableObject
 		public int _initialAttackStartTime;
 		public int _initialAttackEndTime;
 		public int _initialAttackDurationTime;
+		public float _initialAttackSpeed;
+		public GameObject _initialAttackColliderObj;
 	}
 }
 

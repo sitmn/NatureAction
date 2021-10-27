@@ -55,6 +55,8 @@ public class PlayerStatusData_importer : AssetPostprocessor {
 					cell = row.GetCell(2); p.origin_attack = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(3); p.origin_defense = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(4); p.origin_speed = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(5); p._attackRange = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(6); p._attackDurationTime = (int)(cell == null ? 0 : cell.NumericCellValue);
 						s.list.Add (p);
 					}
 					data.sheets.Add(s);

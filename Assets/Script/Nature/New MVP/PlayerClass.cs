@@ -24,6 +24,10 @@ public class PlayerStatus
         get { return _attackDurationTime; }
         set { _attackDurationTime = value; }
     }
+
+    private float _attackSpeed;
+    public float AttackSpeed => _attackSpeed;
+
     private int _maxHealth;
     public int MaxHealth
     {
@@ -82,7 +86,7 @@ public class PlayerStatus
         get { return _mp; } 
         set { _mp = value; } 
     }
-    public int MP
+    public int Mp
     {
         get { return _mp.Value; }
         set
@@ -138,6 +142,7 @@ public class PlayerStatus
     public Skill[] _playerSkill = new Skill[ConstValue._skillSetMax];
     public List<Item> _playerItemList;
     public Equipment _playerEquipment;
+    public GameObject _attackColliderObj;
 
     //コンストラクタ、初期ステータス
     public PlayerStatus(int _initialHealth
@@ -148,10 +153,10 @@ public class PlayerStatus
                       , int _initialSpeed
                       , int _initialAttackStartTime
                       , int _initialAttackEndTime
-                      , int _initialAttackDurationTime)
+                      , int _initialAttackDurationTime
+                      , float _attackSpeed
+                      , GameObject _attackColliderObj)
     {
-        
-
         _maxHealth = _initialHealth;
         _health = _maxHealth;
         _maxHp = _initialHp;
@@ -165,10 +170,12 @@ public class PlayerStatus
         _attackEndTime = _initialAttackEndTime;
         _attackDurationTime = _initialAttackDurationTime;
         _playerUseSkillNo = 0;
+        this._attackSpeed = _attackSpeed;
 
         _playerSkillList = new List<Skill>();
         _playerItemList = new List<Item>();
         _playerEquipment = new Equipment();
+        this._attackColliderObj = _attackColliderObj;
     }
 }
 
@@ -177,34 +184,47 @@ public class Skill
 {
     private string _skillName;
     public string SkillName => _skillName;
+    //消費MP
+    public int _skillMp;
+    public int SkillMp => _skillMp;
+    //攻撃倍率
     private float _skillAttackMagnification;
     public float SkillAttackMagnification => _skillAttackMagnification;
-    //private int _skillStartTime;
-    //public int SkillStartTime => _skillStartTime;
     //アニメーション長さをデフォルト値から短縮
     private float _skillAnimationLength;
     public float SkillAnimationLength => _skillAnimationLength;
+    //スキル後隙
     private int _skillEndTime;
     public int SkillEndTime => _skillEndTime;
+    //スキル判定持続時間
     private int _skillDurationTime;
     public int SkillDurationTime => _skillDurationTime;
+    //スキルコライダー範囲
     private float _skillAttackRange;
     public float SkillAttackRange => _skillAttackRange;
+    //スキル移動速度
+    private float _skillSpeed;
+    public float SkillSpeed => _skillSpeed;
     private string _skillTypeName;
     public string SkillTypeName => _skillTypeName;
+    //スキル毎のアニメーション
     private AnimationClip _skillAnimation;
     public AnimationClip SkillAnimation => _skillAnimation;
+    //スキルオブジェクト
     private GameObject _skillColliderObj;
     public GameObject SkillColliderObj => _skillColliderObj;
+    //スキルアイコン
     private Sprite _skillImage;
     public Sprite SkillImage => _skillImage;
 
     public Skill(string _skillName,
+                 int _skillMp,
                  float _skillAttackMagnification,
                  float _skillAnimationLength,
                  int _skillEndTime,
                  int _skillDurationTime,
                  float _skillAttackRange,
+                 float _skillSpeed,
                  string _skillTypeName,
                  AnimationClip _skillAnimation,
                  GameObject _skillColliderObj,
@@ -212,12 +232,13 @@ public class Skill
     {
 
         this._skillName = _skillName;
+        this._skillMp = _skillMp;
         this._skillAttackMagnification = _skillAttackMagnification;
-        //this._skillStartTime = _skillStartTime;
         this._skillAnimationLength = _skillAnimationLength;
         this._skillEndTime = _skillEndTime;
         this._skillDurationTime = _skillDurationTime;
         this._skillAttackRange = _skillAttackRange;
+        this._skillSpeed = _skillSpeed;
         this._skillTypeName = _skillTypeName;
         this._skillAnimation = _skillAnimation;
         this._skillColliderObj = _skillColliderObj;

@@ -22,6 +22,8 @@ public class PlayerStatusData : ScriptableObject
 		public int origin_attack;
 		public int origin_defense;
 		public int origin_speed;
+		public int _attackRange;
+		public int _attackDurationTime;
 	}
 }
 

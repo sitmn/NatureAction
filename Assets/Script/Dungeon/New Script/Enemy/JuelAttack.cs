@@ -66,7 +66,8 @@ public class JuelAttack : MonoBehaviour
             Destroy(gameObject);
         }else if(other.gameObject.tag == "PlayerAttack")
         {
-            Destroy(gameObject);
+            //プレイヤーの攻撃を破壊
+            Destroy(other.gameObject);
         }
     }
 }
