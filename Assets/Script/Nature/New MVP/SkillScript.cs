@@ -19,7 +19,8 @@ public class SkillScript
                                                                             _skillData.sheets[0].list[_skillNo]._skillTypeName,
                                                                             _skillData.sheets[0].list[_skillNo]._skillAnimation,
                                                                             _skillData.sheets[0].list[_skillNo]._skillColliderObj,
-                                                                            _skillData.sheets[0].list[_skillNo]._skillImage));
+                                                                            _skillData.sheets[0].list[_skillNo]._skillImage,
+                                                                            _skillData.sheets[0].list[_skillNo]._skillAudioClip));
     }
     //使用スキルにセット
     public void SkillSet(int _playerNo, int _setSkillNo, int _removeSkillNo)

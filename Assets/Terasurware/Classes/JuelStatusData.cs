@@ -26,6 +26,8 @@ public class JuelStatusData : ScriptableObject
 		public int _juelAttackSpan;
 		public float _juelAttackRangeMagnification;
 		public int _juelSearchRange;
+		public AudioClip _juelAttackAudio;
+		public AudioClip _juelDamageAudio;
 	}
 }
 

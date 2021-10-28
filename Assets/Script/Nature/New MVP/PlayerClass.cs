@@ -143,6 +143,8 @@ public class PlayerStatus
     public List<Item> _playerItemList;
     public Equipment _playerEquipment;
     public GameObject _attackColliderObj;
+    public AudioClip _attackAudio;
+    public AudioClip _damageAudio;
 
     //コンストラクタ、初期ステータス
     public PlayerStatus(int _initialHealth
@@ -155,7 +157,9 @@ public class PlayerStatus
                       , int _initialAttackEndTime
                       , int _initialAttackDurationTime
                       , float _attackSpeed
-                      , GameObject _attackColliderObj)
+                      , GameObject _attackColliderObj
+                      , AudioClip _attackAudio
+                      , AudioClip _damageAudio)
     {
         _maxHealth = _initialHealth;
         _health = _maxHealth;
@@ -176,6 +180,8 @@ public class PlayerStatus
         _playerItemList = new List<Item>();
         _playerEquipment = new Equipment();
         this._attackColliderObj = _attackColliderObj;
+        this._attackAudio = _attackAudio;
+        this._damageAudio = _damageAudio;
     }
 }
 
@@ -217,6 +223,13 @@ public class Skill
     private Sprite _skillImage;
     public Sprite SkillImage => _skillImage;
 
+    private AudioClip _skillAudioClip;
+    public AudioClip SkillAudioClip
+    {
+        get { return _skillAudioClip; }
+        set { _skillAudioClip = value; }
+    }
+
     public Skill(string _skillName,
                  int _skillMp,
                  float _skillAttackMagnification,
@@ -228,7 +241,8 @@ public class Skill
                  string _skillTypeName,
                  AnimationClip _skillAnimation,
                  GameObject _skillColliderObj,
-                 Sprite _skillImage)
+                 Sprite _skillImage,
+                 AudioClip _skillAudioClip)
     {
 
         this._skillName = _skillName;
@@ -244,6 +258,7 @@ public class Skill
         this._skillColliderObj = _skillColliderObj;
         this._skillColliderObj = _skillColliderObj;
         this._skillImage = _skillImage;
+        this._skillAudioClip = _skillAudioClip;
     }
 }
 

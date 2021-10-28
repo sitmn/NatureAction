@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
-  m_ObjectHideFlags: 8
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -26,3 +26,5 @@ MonoBehaviour:
       _enemyAttackSpeed: 0.03
       _enemyAttackRange: 1
       _enemySearchRange: 3
+      _enemyAttackAudio: {fileID: 8300000, guid: 6f3417e85935e2945874b54b53aefd2e, type: 3}
+      _enemyDamageAudio: {fileID: 8300000, guid: f9de7538722fc9649b747259b354e896, type: 3}

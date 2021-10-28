@@ -14,14 +14,17 @@ public class PlayerAnimation : MonoBehaviour
     //攻撃判定
     [SerializeField]
     private GameObject _attackColliderObj;
-    //スキルの攻撃判定
-    private GameObject _skillColliderObj;
+
+    //SE
+    private SE _playerSE;
 
     private void Awake()
     {
         _playerAnimation = GetComponent<Animator>();
         _animatorOverrideController = new AnimatorOverrideController();
         OverrideAnimationClipSet();
+
+        _playerSE = GetComponent<SE>();
     }
 
     private void OverrideAnimationClipSet()
@@ -82,6 +85,12 @@ public class PlayerAnimation : MonoBehaviour
     //攻撃実行
     public void AttackStart()
     {
+        //攻撃効果音
+        if(GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate]._attackAudio != null)
+        {
+            _playerSE.PlaySE(GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate]._attackAudio);
+        }
+
         GameObject _attackObj = Instantiate(GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate]._attackColliderObj, transform.forward, Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0));
         //弾の大きさに応じて敵から離れた位置に弾を生成
         _attackObj.transform.position = transform.position + transform.forward + new Vector3(0, 0.5f, 0);
@@ -90,6 +99,12 @@ public class PlayerAnimation : MonoBehaviour
     //プレイヤーのスキル
     public void SkillStart()
     {
+        //スキル効果音
+        if (GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate]._playerSkill[GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].PlayerUseSkillNo].SkillAudioClip != null)
+        {
+            _playerSE.PlaySE(GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate]._playerSkill[GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].PlayerUseSkillNo].SkillAudioClip);
+        }
+
         GameObject _skillColliderObj = Instantiate(GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate]._playerSkill[GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].PlayerUseSkillNo].SkillColliderObj, this.transform.position + new Vector3(0, 0.5f, 0), this.transform.rotation * Quaternion.AngleAxis(90f, Vector3.right));
         
         //SkillCのみプレイヤー中心に

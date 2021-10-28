@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GameManagerold : MonoBehaviour
 {
     //マスタデータ
-    public PlayerStatusData playerStatusData;
+    //public PlayerStatusData playerStatusData;
     public SystemData systemData;
     public TrainingPointData trainingPointData;
 
@@ -43,7 +43,7 @@ public class GameManagerold : MonoBehaviour
 
     void Awake()
     {
-        playerStatusData = Resources.Load("PlayerStatusData") as PlayerStatusData;
+        //playerStatusData = Resources.Load("PlayerStatusData") as PlayerStatusData;
         systemData = Resources.Load("SystemData") as SystemData;
         trainingPointData = Resources.Load("trainingPointData") as TrainingPointData;
 

@@ -17,7 +17,11 @@ public class JuelController : MonoBehaviour
     public int JuelNo => _juelNo;
 
     private ReactiveProperty<int> _juelHp;
-    public ReactiveProperty<int> ReactiveJuelHp => _juelHp;
+    public ReactiveProperty<int> ReactiveHp
+    {
+        get { return _juelHp; }
+        set { _juelHp = value; }
+    }
     public int JuelHp
     {
         get { return _juelHp.Value; }
@@ -32,12 +36,17 @@ public class JuelController : MonoBehaviour
             }
     }
 
+    private SE _juelSE;
+    private JuelHpBarModel _juelHpBarModel;
+
 
     // Start is called before the first frame update
     void Start()
     {
         this._juelHp = new ReactiveProperty<int>(EnemyStatus._juelStatusData.sheets[0].list[_juelNo]._juelMaxHp);
-
+        _juelSE = GetComponent<SE>();
+        _juelHpBarModel = GetComponent<JuelHpBarModel>();
+        
         _searchEnemyFlag = false;
 
         _juelHp.Value = EnemyStatus._juelStatusData.sheets[0].list[_juelNo]._juelMaxHp;
@@ -51,11 +60,21 @@ public class JuelController : MonoBehaviour
 
         //体力管理用ストリーム作成
         _juelHp
-            .Where((x) => x <= 0)
-            .Subscribe((_) =>
+            .Skip(1)
+            .Subscribe((x) =>
             {
-                _attackStream.Dispose();
-                JuelDestroy();
+                if (x > 0)
+                {
+                    if (EnemyStatus._juelStatusData.sheets[0].list[_juelNo]._juelDamageAudio != null) _juelSE.PlaySE(EnemyStatus._juelStatusData.sheets[0].list[_juelNo]._juelDamageAudio);
+                }
+                else
+                {
+                    if (EnemyStatus._juelStatusData.sheets[0].list[_juelNo]._juelDamageAudio != null) _juelSE.PlaySE(EnemyStatus._juelStatusData.sheets[0].list[_juelNo]._juelDamageAudio);
+                    _attackStream.Dispose();
+                    JuelDestroy();
+                }
+
+                _juelHpBarModel.SetHpUI(x, _juelNo);
             })
             .AddTo(this);
     }
@@ -63,6 +82,8 @@ public class JuelController : MonoBehaviour
     //一定時間毎に攻撃を実行
     private void JuelAction()
     {
+        if (EnemyStatus._juelStatusData.sheets[0].list[_juelNo]._juelAttackAudio != null) _juelSE.PlaySE(EnemyStatus._juelStatusData.sheets[0].list[_juelNo]._juelAttackAudio);
+
         GameObject childObj = Instantiate(_actionObj, transform.forward, Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0));
         childObj.transform.parent = transform;
         //弾の大きさに応じて宝石から離れた位置に弾を生成

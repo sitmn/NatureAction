@@ -29,6 +29,7 @@ public class SkillData : ScriptableObject
 		public AnimationClip _skillAnimation;
 		public GameObject _skillColliderObj;
 		public Sprite _skillImage;
+		public AudioClip _skillAudioClip;
 	}
 }
 

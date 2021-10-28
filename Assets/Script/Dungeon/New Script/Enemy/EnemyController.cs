@@ -13,6 +13,11 @@ public class EnemyController : MonoBehaviour
     public int EnemyNo => _enemyNo;
 
     private ReactiveProperty<int> _enemyHp;
+    public ReactiveProperty<int> ReactiveHp
+    {
+        get { return _enemyHp; }
+        set { _enemyHp = value; }
+    }
     public int EnemyHp {
         get { return _enemyHp.Value; }
         set {
@@ -27,6 +32,10 @@ public class EnemyController : MonoBehaviour
 
     private Animator _animator;
 
+    private SE _enemySE;
+
+    private EnemyHpBarModel _enemyHpBarModel;
+
     //攻撃開始範囲にプレイヤーがいるか
     public bool _searchEnemyFlag;
 
@@ -40,6 +49,8 @@ public class EnemyController : MonoBehaviour
     {
         _enemyNavmesh = GetComponent<EnemyNavmesh>();
         _animator = GetComponent<Animator>();
+        _enemySE = GetComponent<SE>();
+        _enemyHpBarModel = GetComponent<EnemyHpBarModel>();
 
         _navSpeed = _enemyNavmesh._navmeshAgent.speed;
 
@@ -58,9 +69,11 @@ public class EnemyController : MonoBehaviour
 
         //体力管理用ストリーム作成
         _enemyHp
+            .Skip(1)
             .Subscribe((x) =>
             {
-                if(x > 0)
+                if (EnemyStatus._enemyStatusData.sheets[0].list[_enemyNo]._enemyDamageAudio != null) _enemySE.PlaySE(EnemyStatus._enemyStatusData.sheets[0].list[_enemyNo]._enemyDamageAudio);
+                if (x > 0)
                 {
                     _animator.SetTrigger("Damage");
                 }
@@ -69,6 +82,8 @@ public class EnemyController : MonoBehaviour
                     _attackStream.Dispose();
                     _animator.SetTrigger("Die");
                 }
+
+                _enemyHpBarModel.SetHpUI(x, _enemyNo);
             })
             .AddTo(this);
     }
@@ -112,6 +127,8 @@ public class EnemyController : MonoBehaviour
     //攻撃アニメーション時、攻撃を生成
     private void EnemyAttack()
     {
+        if (EnemyStatus._enemyStatusData.sheets[0].list[_enemyNo]._enemyAttackAudio != null) _enemySE.PlaySE(EnemyStatus._enemyStatusData.sheets[0].list[_enemyNo]._enemyAttackAudio);
+
         GameObject _attackObj = Instantiate(_actionObj, transform.forward, Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0));
         //弾の大きさに応じて敵から離れた位置に弾を生成
         _attackObj.transform.position = transform.position + transform.forward * EnemyStatus._enemyStatusData.sheets[0].list[_enemyNo]._enemyAttackRange + new Vector3(0, 0.5f, 0);

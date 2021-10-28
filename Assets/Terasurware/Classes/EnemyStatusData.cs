@@ -28,6 +28,8 @@ public class EnemyStatusData : ScriptableObject
 		public float _enemyAttackSpeed;
 		public int _enemyAttackRange;
 		public int _enemySearchRange;
+		public AudioClip _enemyAttackAudio;
+		public AudioClip _enemyDamageAudio;
 	}
 }
 
