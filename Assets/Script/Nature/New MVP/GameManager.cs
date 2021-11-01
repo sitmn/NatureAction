@@ -120,20 +120,15 @@ public class GameManager : MonoBehaviour
 //ゴールド、魔石等の共有アイテム
 public class ShareItem
 {
-    public Gold _gold;
-    
     public MagicStone[] _magicStone;
 
     public ShareItem(){
-        _gold = new Gold();
         _magicStone = new MagicStone[5];
 
         for(int i = 0;i <  _magicStone.Length; i++)
         {
             _magicStone[i] = new MagicStone();
         }
-
-        _gold.Amount = 0;
 
         _magicStone[0].Name = "パープルストーン";
         _magicStone[1].Name = "レッドストーン";
@@ -158,15 +153,6 @@ public class ShareItem
     }
 }
 
-public class Gold
-{
-    private int _amount;
-    public int Amount
-    {
-        get { return _amount; }
-        set { _amount = _amount + value; }
-    }
-}
 
 public class MagicStone
 {

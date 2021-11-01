@@ -14,7 +14,7 @@ public class PlayerAttackCollider : MonoBehaviour
     void Update()
     {
         Vector3 _attackVector = Quaternion.AngleAxis(transform.rotation.eulerAngles.y - 90, Vector3.up) * Vector3.right;
-        transform.position += _attackVector * GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].AttackSpeed;
+        transform.position += _attackVector * GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].AttackSpeed * Time.deltaTime;
     }
 
     private async void DeleteAttack()

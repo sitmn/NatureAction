@@ -21,7 +21,7 @@ public class PlayerSkillCollider : MonoBehaviour
     void Update()
     {
         Vector3 _skillVector = Quaternion.AngleAxis(transform.rotation.eulerAngles.y - 90, Vector3.up) * Vector3.right;
-        transform.position += _skillVector * GameManager.Instance._playerStatus[_playerOperate]._playerSkill[_skillUseNo].SkillSpeed;
+        transform.position += _skillVector * GameManager.Instance._playerStatus[_playerOperate]._playerSkill[_skillUseNo].SkillSpeed * Time.deltaTime;
     }
 
     private async void DeleteSkill()
