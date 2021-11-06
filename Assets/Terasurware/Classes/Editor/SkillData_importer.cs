@@ -60,6 +60,11 @@ public class SkillData_importer : AssetPostprocessor {
 					cell = row.GetCell(7); p._skillSpeed = (float)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(8); p._skillDetail = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(9); p._skillTypeName = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(10); p._consumePurpleStone = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(11); p._consumeRedStone = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(12); p._consumeBlueStone = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(13); p._consumeGreenStone = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(14); p._consumeYellowStone = (int)(cell == null ? 0 : cell.NumericCellValue);
 						s.list.Add (p);
 					}
 					data.sheets.Add(s);

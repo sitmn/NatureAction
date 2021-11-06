@@ -12,7 +12,10 @@ public class ButtonViewBase : MonoBehaviour
      *3:移動選択ボタン（町・ダンジョン）
      *4:移動決定ボタン
      *5:スキル選択ボタン
-     *6:セーブボタン
+     *6:セットスキル入替ボタン
+     *7:スキル変更確定ボタン
+     *8:スキルアンロック確定ボタン
+     *9:セーブボタン
      */
     protected int _buttonNo;
     

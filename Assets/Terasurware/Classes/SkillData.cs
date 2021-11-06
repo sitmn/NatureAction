@@ -27,6 +27,11 @@ public class SkillData : ScriptableObject
 		public float _skillSpeed;
 		public string _skillDetail;
 		public string _skillTypeName;
+		public int _consumePurpleStone;
+		public int _consumeRedStone;
+		public int _consumeBlueStone;
+		public int _consumeGreenStone;
+		public int _consumeYellowStone;
 		public AnimationClip _skillAnimation;
 		public GameObject _skillColliderObj;
 		public Sprite _skillImage;

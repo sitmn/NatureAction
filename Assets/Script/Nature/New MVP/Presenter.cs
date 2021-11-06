@@ -38,6 +38,16 @@ public class Presenter : MonoBehaviour
     private ButtonViewTrainingConfirm ButtonViewTrainingConfirm;
     [SerializeField]
     private ButtonViewMoveConfirm ButtonViewMoveConfirm;
+    [SerializeField]
+    private ButtonViewSetSkill[] ButtonViewSetSkillPlayer1;
+    [SerializeField]
+    private ButtonViewSetSkill[] ButtonViewSetSkillPlayer2;
+    [SerializeField]
+    private List<ButtonViewChangeSkill> ButtonViewChangeSkill;
+    [SerializeField]
+    private ButtonViewChangeSkillConfirm ButtonViewChangeSkillConfirm;
+    [SerializeField]
+    private ButtonViewSkillUnrockConfirm ButtonViewSkillUnrockConfirm;
     /**************************************************/
 
 
@@ -81,7 +91,14 @@ public class Presenter : MonoBehaviour
     //スキル画面用スクリプト
     [SerializeField]
     private SkillScript _skillScr;
+    [SerializeField]
+    private ConsumeStoneAmountModel _consumeStoneAmountModel;
     private SkillData _skillData;
+    //選択中の装備スキルボタン 0がプレイヤー1,1がプレイヤー2
+    private ButtonViewSetSkill[] _selectSetSkillButtonViewArray = new ButtonViewSetSkill[ConstValue._playerAmount];
+    //選択中のスキルボタン
+    private ButtonViewChangeSkill _selectChangeSkillButton;
+    UseMagicStoneStruct _useMagicStone;
     /**************************************************/
 
     private void Awake()
@@ -99,6 +116,8 @@ public class Presenter : MonoBehaviour
     {
         systemData = Resources.Load("SystemData") as SystemData;
         _skillData = Resources.Load("SkillData") as SkillData;
+        
+        ButtonViewChangeSkill = _skillScr.SkillButtonSet();
 
         ButtonStream _buttonStream = new ButtonStream
             (ButtonViewScreenChangeArray 
@@ -106,7 +125,12 @@ public class Presenter : MonoBehaviour
             , ButtonViewTrainingPlayer2Array 
             , ButtonViewTrainingConfirm
             , ButtonViewMoveArray
-            , ButtonViewMoveConfirm);
+            , ButtonViewMoveConfirm
+            , ButtonViewSetSkillPlayer1
+            , ButtonViewSetSkillPlayer2
+            , ButtonViewChangeSkill
+            , ButtonViewChangeSkillConfirm
+            , ButtonViewSkillUnrockConfirm);
 
 
         //ボタンのストリームを登録
@@ -161,7 +185,19 @@ public class Presenter : MonoBehaviour
             MoveButtonConfirm();
         }else if(_buttonViewBase.ButtonNo == 5)
         {
-
+            SetSkillSelect(_buttonViewBase);
+        }
+        else if (_buttonViewBase.ButtonNo == 6)
+        {
+            SetSkillChangeSelect(_buttonViewBase);
+        }
+        else if (_buttonViewBase.ButtonNo == 7)
+        {
+            SetSkillChange();
+        }
+        else if (_buttonViewBase.ButtonNo == 8)
+        {
+            SkillUnrock();
         }
     }
     
@@ -179,6 +215,14 @@ public class Presenter : MonoBehaviour
         _trainingStruct = new TrainingStruct();
 
         _selectMoveButtonView = null;
+
+        for(int i = 0; i < _selectSetSkillButtonViewArray.Length; i++){
+            _selectSetSkillButtonViewArray[i] = null;
+        }
+
+        _selectChangeSkillButton = null;
+
+        _useMagicStone = new UseMagicStoneStruct();
     }
 
     
@@ -219,7 +263,7 @@ public class Presenter : MonoBehaviour
         
         //選択ボタンをグローバル変数に格納するためのメソッド
         Action<ButtonViewBase> _buttonSelectInMethod = TrainingButtonViewSelect;
-
+        
         //押したボタンを１つ選択状態に
         if (_buttonViewTraining.OwnerIsPlayer2TrainingButtonFlag)
         {
@@ -261,7 +305,6 @@ public class Presenter : MonoBehaviour
     private void TrainingButtonViewSelect(ButtonViewBase _selectButtonView)
     {
         ButtonViewTraining _buttonViewTraining = _selectButtonView as ButtonViewTraining;
-        Debug.Log(Convert.ToInt32(_buttonViewTraining.OwnerIsPlayer2TrainingButtonFlag));
         _selectTrainingButtonViewArray[Convert.ToInt32(_buttonViewTraining.OwnerIsPlayer2TrainingButtonFlag)] = _buttonViewTraining;
     }
     private void MoveButtonViewSelect(ButtonViewBase _selectButtonView)
@@ -269,7 +312,17 @@ public class Presenter : MonoBehaviour
         ButtonViewMove _buttonViewMove = _selectButtonView as ButtonViewMove;
         _selectMoveButtonView = _buttonViewMove;
     }
+    private void SetSkillButtonViewSelect(ButtonViewBase _selectButtonView)
+    {
+        ButtonViewSetSkill _buttonViewSetSkill = _selectButtonView as ButtonViewSetSkill;
+        _selectSetSkillButtonViewArray[_buttonViewSetSkill.PlayerOperate] = _buttonViewSetSkill;
+    }
 
+    private void ChangeSkillButtonViewSelect(ButtonViewBase _selectButtonView)
+    {
+        ButtonViewChangeSkill _buttonViewChangeSkill = _selectButtonView as ButtonViewChangeSkill;
+        _selectChangeSkillButton = _buttonViewChangeSkill;
+    }
 
     //ボタンNo2：修行確定ボタン
     private void TrainingConfirm()
@@ -375,6 +428,72 @@ public class Presenter : MonoBehaviour
             SceneManager.LoadScene("Dungeon");
         }
     }
+
+
+    //ボタンNo5：装備スキル選択ボタン
+    private void SetSkillSelect(ButtonViewBase _buttonViewBase)
+    {
+        ButtonViewSetSkill _buttonViewSetSkill = _buttonViewBase as ButtonViewSetSkill;
+        Action<ButtonViewBase> _buttonSelectInMethod = SetSkillButtonViewSelect;
+
+        if (_buttonViewSetSkill.PlayerOperate == 0)
+        {
+            ButtonSelect(_buttonViewBase, ButtonViewSetSkillPlayer1, _buttonSelectInMethod);
+        }else if(_buttonViewSetSkill.PlayerOperate == 1)
+        {
+            ButtonSelect(_buttonViewBase, ButtonViewSetSkillPlayer2, _buttonSelectInMethod);
+        }
+    }
+
+    //ボタンNo6：装備スキル入れ替え選択ボタン
+    private void SetSkillChangeSelect(ButtonViewBase _buttonViewBase)
+    {
+        ButtonViewChangeSkill _buttonViewChangeSkill = _buttonViewBase as ButtonViewChangeSkill;
+        Action<ButtonViewBase> _buttonSelectInMethod = ChangeSkillButtonViewSelect;
+
+        //Listを配列に
+        ButtonViewChangeSkill[] _buttonViewChangeSkillArray = new ButtonViewChangeSkill[ButtonViewChangeSkill.Count];
+        for(int i = 0; i < ButtonViewChangeSkill.Count; i++)
+        {
+            _buttonViewChangeSkillArray[i] = ButtonViewChangeSkill[i];
+        }
+        //ボタンを選択状態に
+        ButtonSelect(_buttonViewBase, _buttonViewChangeSkillArray, _buttonSelectInMethod);
+
+        _useMagicStone = _skillScr.UseMagicStoneCalculate(_buttonViewChangeSkill.SkillNo);
+        //魔石消費量表示,ヘッダーとスキルスクリーン
+        _magicStoneAmountModel.RemainMagicStoneDisplay(_useMagicStone);
+        _consumeStoneAmountModel.DisplayConsumeStone(_selectChangeSkillButton.SkillNo, _skillData);
+    }
+
+    //ボタンNo7：装備スキル入れ替え確定ボタン
+    private void SetSkillChange()
+    {
+        //スキルが選択されていて、習得しているスキルの場合、スキル入替
+        if(_selectChangeSkillButton != null && _selectSetSkillButtonViewArray[_selectChangeSkillButton.PlayerOperate] && GameManager.Instance._playerStatus[_selectChangeSkillButton.PlayerOperate]._playerSkillList[_selectChangeSkillButton.SkillNo] == true)
+        {
+            _skillScr.SetSkillButtonInfomation(_selectChangeSkillButton.PlayerOperate, _selectChangeSkillButton.SkillNo, _selectSetSkillButtonViewArray[_selectChangeSkillButton.PlayerOperate].SetSkillNo);
+        }
+    }
+
+    //ボタンNo8：スキルアンロック確定ボタン
+    private void SkillUnrock()
+    {
+        //スキルが選択されていて、習得していないスキルの場合、魔石が足りていればスキル習得
+        if (_selectChangeSkillButton != null && GameManager.Instance._playerStatus[_selectChangeSkillButton.PlayerOperate]._playerSkillList[_selectChangeSkillButton.SkillNo] == false)
+        {
+            if(GameManager.Instance._shareItem._magicStone[0].Amount >= _useMagicStone._useMagicStone[0]
+            && GameManager.Instance._shareItem._magicStone[1].Amount >= _useMagicStone._useMagicStone[1]
+            && GameManager.Instance._shareItem._magicStone[2].Amount >= _useMagicStone._useMagicStone[2]
+            && GameManager.Instance._shareItem._magicStone[3].Amount >= _useMagicStone._useMagicStone[3]
+            && GameManager.Instance._shareItem._magicStone[4].Amount >= _useMagicStone._useMagicStone[4])
+            {
+                _skillScr.SkillObtain(_selectChangeSkillButton.PlayerOperate, _selectChangeSkillButton.SkillNo);
+                _selectChangeSkillButton.gameObject.transform.GetChild(0).GetComponent<Image>().sprite = _skillData.sheets[0].list[_selectChangeSkillButton.SkillNo]._skillImage;
+                _magicStoneAmountModel.UseMagicStone(_useMagicStone);
+            }
+        }
+    }
 }
 
 
@@ -392,7 +511,12 @@ public class ButtonStream{
         , ButtonViewTraining[] _buttonViewTrainingPlayer2Array
         , ButtonViewTrainingConfirm _buttonViewTrainingConfirm
         , ButtonViewMove[] _buttonViewMove
-        , ButtonViewMoveConfirm _buttonViewMoveConfirm)
+        , ButtonViewMoveConfirm _buttonViewMoveConfirm
+        , ButtonViewSetSkill[] _buttonViewSetSkillPlayer1
+        , ButtonViewSetSkill[] _buttonViewSetSkillPlayer2
+        , List<ButtonViewChangeSkill> _buttonViewChangeSkill
+        , ButtonViewChangeSkillConfirm _buttonViewChangeSkillConfirm
+        , ButtonViewSkillUnrockConfirm _buttonViewSkillUnrockConfirm)
     {
         //全てのボタン数
         int _allButtonCount
@@ -401,7 +525,13 @@ public class ButtonStream{
             + _buttonViewTrainingPlayer2Array.Length
             + 1 //_buttonViewTrainingConfirm
             + _buttonViewMove.Length
-            + 1; //_buttonViewMoveConfirm
+            + 1 //_buttonViewMoveConfirm
+            + _buttonViewSetSkillPlayer1.Length
+            + _buttonViewSetSkillPlayer2.Length
+            + _buttonViewChangeSkill.Count
+            + 1 //_buttonViewChangeSkillConfirm
+            + 1 //_buttonViewSkillUnrockConfirm
+            ;
 
         _allButtonViewList = new List<ButtonViewBase>();
         _allButtonArray = new Button[_allButtonCount];
@@ -428,6 +558,25 @@ public class ButtonStream{
         }
 
         _allButtonViewList.Add(_buttonViewMoveConfirm);
+
+        foreach (ButtonViewSetSkill _buttonView in _buttonViewSetSkillPlayer1)
+        {
+            _allButtonViewList.Add(_buttonView);
+        }
+
+        foreach (ButtonViewSetSkill _buttonView in _buttonViewSetSkillPlayer2)
+        {
+            _allButtonViewList.Add(_buttonView);
+        }
+
+        foreach (ButtonViewChangeSkill _buttonView in _buttonViewChangeSkill)
+        {
+            _allButtonViewList.Add(_buttonView);
+        }
+
+        _allButtonViewList.Add(_buttonViewChangeSkillConfirm);
+
+        _allButtonViewList.Add(_buttonViewSkillUnrockConfirm);
 
         for (int i = 0; i < _allButtonViewList.Count; i++)
         {

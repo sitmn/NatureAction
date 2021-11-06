@@ -14,14 +14,15 @@ public class SkillScript : MonoBehaviour
     [SerializeField]
     private GameObject _instantiateButtonObj;
 
-    //キャラにセットされているスキルボタンの選択状況
-    private int[] _setSkill = new int[ConstValue._playerAmount];
-
     //キャラにセットされているスキル用のボタンイメージ
     [SerializeField]
     private Image[] _setSkillButtonImage1;
     [SerializeField]
     private Image[] _setSkillButtonImage2;
+
+    //習得していない時の南京錠画像
+    [SerializeField]
+    private Sprite _padlockSprite;
 
     private void Awake()
     {
@@ -30,12 +31,14 @@ public class SkillScript : MonoBehaviour
 
     private void Start()
     {
-        SkillButtonSet();
         gameObject.SetActive(false);
     }
 
-    private void SkillButtonSet()
+    //装備スキル入替ボタンを生成し、Presenterにボタンを渡す
+    public List<ButtonViewChangeSkill> SkillButtonSet()
     {
+        List<ButtonViewChangeSkill> _buttonViewChangeSkillList = new List<ButtonViewChangeSkill>();
+
         for(int i = 0;i < ConstValue._playerAmount; i++)
         {
             int i2 = i;
@@ -45,11 +48,13 @@ public class SkillScript : MonoBehaviour
                 
                 int j2 = j;
 
+                //ボタンを生成して、ボタン毎にキャラとスキルNoを設定
                 GameObject _buttonObj = Instantiate(_instantiateButtonObj, _contentTr[i2]);
+                _buttonViewChangeSkillList.Add(InstantiateButtonScript(_buttonObj, i2, j2));
                 //スキル画像と詳細文をセット
-                SetSkillDetail(_buttonObj, j2);
+                SetSkillDetail(_buttonObj, i2, j2);
                 //ボタンの中身をセット
-                _buttonObj.GetComponent<Button>().onClick.AddListener(() => SetSkillButtonInfomation(i2, j2));
+                //_buttonObj.GetComponent<Button>().onClick.AddListener(() => SetSkillButtonInfomation(i2, j2));
             }
 
             for (int j = 0; j < ConstValue._skillSetMax; j++)
@@ -57,7 +62,21 @@ public class SkillScript : MonoBehaviour
                 InstantiateSetSkillImage(i2, GameManager.Instance._playerStatus[i2]._playerSkill[j].SkillImage, j);
             }
         }
+
+        return _buttonViewChangeSkillList;
     }
+
+
+    //ボタン毎に対象のキャラとスキルNoをセット
+    private ButtonViewChangeSkill InstantiateButtonScript(GameObject _buttonObj, int _playerOperate, int _skillNo)
+    {
+        ButtonViewChangeSkill _buttonViewChangeSkill = _buttonObj.GetComponent<ButtonViewChangeSkill>();
+        _buttonViewChangeSkill.PlayerOperate = _playerOperate;
+        _buttonViewChangeSkill.SkillNo = _skillNo;
+
+        return _buttonViewChangeSkill;
+    }
+
 
     //装備しているスキルの画像セット、初期値
     private void InstantiateSetSkillImage(int _playerOperate, Sprite _skillImage, int _removeSkillNo)
@@ -85,10 +104,18 @@ public class SkillScript : MonoBehaviour
     }
 
     //ボタンにスキルの画像と詳細をセット
-    private void SetSkillDetail(GameObject _buttonObj, int _skillNo)
+    private void SetSkillDetail(GameObject _buttonObj,int _playerOperate ,int _skillNo)
     {
-        //スキル画像をセット
-        _buttonObj.GetComponent<Transform>().GetChild(0).GetComponent<Image>().sprite = _skillData.sheets[0].list[_skillNo]._skillImage;
+        //スキル画像をセット,習得している場合はスキルの画像、習得していない場合は南京錠マーク
+        if(GameManager.Instance._playerStatus[_playerOperate]._playerSkillList[_skillNo] == true)
+        {
+            _buttonObj.GetComponent<Transform>().GetChild(0).GetComponent<Image>().sprite = _skillData.sheets[0].list[_skillNo]._skillImage;
+        }
+        else
+        {
+            _buttonObj.GetComponent<Transform>().GetChild(0).GetComponent<Image>().sprite = _padlockSprite;
+        }
+            
         //スキル詳細をセット
         _buttonObj.GetComponent<Transform>().GetChild(1).GetComponent<Text>().text = "攻撃倍率：" + _skillData.sheets[0].list[_skillNo]._skillAttackMagnification.ToString()
                                                                                 + "　消費MP：" + _skillData.sheets[0].list[_skillNo]._skillMP.ToString()
@@ -96,18 +123,13 @@ public class SkillScript : MonoBehaviour
     }
 
     //ボタンにスキルの内容をセット
-    private void SetSkillButtonInfomation(int _playerOperate, int _skillNo)
+    public void SetSkillButtonInfomation(int _playerOperate, int _skillNo, int _removeSkillNo)
     {
         //習得しているスキルボタン（押すとスキルをセット）
         if(GameManager.Instance._playerStatus[_playerOperate]._playerSkillList[_skillNo] == true)
         {
-            SkillSet(_playerOperate, _skillNo, _setSkill[_playerOperate]);
-            SetSkillImage(_playerOperate, _skillNo, _setSkill[_playerOperate]);
-        }
-        //習得していないスキルボタン（押すとスキル習得画面が表示）
-        else
-        {
-
+            SkillSet(_playerOperate, _skillNo, _removeSkillNo);
+            SetSkillImage(_playerOperate, _skillNo, _removeSkillNo);
         }
     }
 
@@ -138,12 +160,20 @@ public class SkillScript : MonoBehaviour
         GameManager.Instance._playerStatus[_playerNo]._playerSkill[_removeSkillNo] = _skill;
     }
 
-    private void OnEnable()
+    //スキル習得に必要な魔石量の導出
+    public UseMagicStoneStruct UseMagicStoneCalculate(int _skillNo)
     {
-        //スクリーン表示時、カーソルをスキル1に合わせる
-        for(int i= 0; i < ConstValue._playerAmount; i++)
+        UseMagicStoneStruct _useMagicStoneStruct = new UseMagicStoneStruct(_skillData.sheets[0].list[_skillNo]._consumePurpleStone
+                                                                         , _skillData.sheets[0].list[_skillNo]._consumeRedStone
+                                                                         , _skillData.sheets[0].list[_skillNo]._consumeBlueStone
+                                                                         , _skillData.sheets[0].list[_skillNo]._consumeGreenStone
+                                                                         , _skillData.sheets[0].list[_skillNo]._consumeYellowStone);
+
+        foreach(int _consumeStone in _useMagicStoneStruct._useMagicStone)
         {
-            _setSkill[i] = 0;
+            _useMagicStoneStruct._useSumMagicStone += _consumeStone;
         }
+
+        return _useMagicStoneStruct;
     }
 }

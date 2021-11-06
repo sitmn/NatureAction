@@ -3,16 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ButtonViewSetSkill : ButtonViewBase
+public class ButtonViewChangeSkill : ButtonViewBase
 {
-    //装備スキルを変更するキャラNo
-    [SerializeField]
+    //入れ替えるスキルの番号
+    private int _skillNo;
+    public int SkillNo
+    {
+        get { return _skillNo; }
+        set { _skillNo = value; }
+    }
+
+    //スキルを入れ替えるキャラの番号
     private int _playerOperate;
-    public int PlayerOperate => _playerOperate;
-    //変更する装備スキルNo
-    [SerializeField]
-    private int _setSkillNo;
-    public int SetSkillNo => _setSkillNo;
+    public int PlayerOperate
+    {
+        get { return _playerOperate; }
+        set { _playerOperate = value; }
+    }
+
 
     //ボタンImage
     private Image _buttonImage;
@@ -29,7 +37,7 @@ public class ButtonViewSetSkill : ButtonViewBase
     //ボタン判定用
     void Start()
     {
-        _buttonNo = 5;
+        _buttonNo = 6;
 
         _buttonColorSpeed = ConstValue._buttonBlinkTime;
 
@@ -63,5 +71,6 @@ public class ButtonViewSetSkill : ButtonViewBase
     private void OnDisable()
     {
         _buttonSelectFlag = false;
+        
     }
 }
