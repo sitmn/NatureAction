@@ -79,9 +79,20 @@ public class Presenter : MonoBehaviour
 
     /******************** スキル情報 ********************/
     //スキル画面用スクリプト
+    [SerializeField]
     private SkillScript _skillScr;
     private SkillData _skillData;
     /**************************************************/
+
+    private void Awake()
+    {
+        GameManager.Instance.InitializePlayerStatus();
+
+        //初期スキルセット
+        GameManager.Instance.InstantiateSkill();
+        GameManager.Instance.PlayerOperate = 0;
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -123,7 +134,6 @@ public class Presenter : MonoBehaviour
 
 
         _trainingCalculateScr = new TrainingCalculateScript();
-        _skillScr = new SkillScript();
     }
 
     

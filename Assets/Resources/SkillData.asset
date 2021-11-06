@@ -23,6 +23,7 @@ MonoBehaviour:
       _skillEndTime: 1000
       _skillDurationTime: 1000
       _skillSpeed: 10
+      _skillDetail: "\u30C0\u30E1\u30FC\u30B8\u30FB\u6D88\u8CBBMP\u30FB\u653B\u6483\u7BC4\u56F2\u7B49\u3001\u5168\u3066\u304C\u30AA\u30FC\u30BD\u30C9\u30C3\u30AF\u30B9\u306A\u30B9\u30AD\u30EB\u653B\u6483"
       _skillTypeName: SkillTypeA
       _skillAnimation: {fileID: 7400000, guid: 6b0522ca9a4adbf4f9779365eb30579f, type: 2}
       _skillColliderObj: {fileID: 6815398643842173616, guid: b64e6d2cb53a30a4098aa04adb8b0132, type: 3}
@@ -36,6 +37,7 @@ MonoBehaviour:
       _skillEndTime: 300
       _skillDurationTime: 2500
       _skillSpeed: 15
+      _skillDetail: "\u30C0\u30E1\u30FC\u30B8\u304C\u4F4E\u3044\u4EE3\u308F\u308A\u306B\u9023\u5C04\u6027\u306E\u3042\u308B\u30B9\u30AD\u30EB\u653B\u6483"
       _skillTypeName: SkillTypeB
       _skillAnimation: {fileID: 7400000, guid: 323005ca4531c094d905fbc272625f29, type: 2}
       _skillColliderObj: {fileID: 4652917396212523270, guid: 78a8f34406fb5a044baad1e9cb3750c9, type: 3}
@@ -49,6 +51,7 @@ MonoBehaviour:
       _skillEndTime: 1800
       _skillDurationTime: 1000
       _skillSpeed: 0
+      _skillDetail: "\u706B\u529B\u306E\u9AD8\u3044\u5468\u56F2\u653B\u6483\u3001\u5C11\u3057\u51FA\u304C\u9045\u3044"
       _skillTypeName: SkillTypeC
       _skillAnimation: {fileID: 7400000, guid: 2ecb4a9fef1562d48907ddc6aea61aa9, type: 2}
       _skillColliderObj: {fileID: 5416963710049493973, guid: 6e2b12adb3c5e844ebc092d89ec10e45, type: 3}
@@ -62,6 +65,7 @@ MonoBehaviour:
       _skillEndTime: 800
       _skillDurationTime: 100
       _skillSpeed: 0
+      _skillDetail: "\u7BC4\u56F2\u304C\u77ED\u304F\u3001\u98DB\u3070\u306A\u3044\u4EE3\u308F\u308A\u306B\u5A01\u529B\u306E\u9AD8\u3044\u30B9\u30AD\u30EB\u653B\u6483"
       _skillTypeName: SkillTypeD
       _skillAnimation: {fileID: 7400000, guid: 5087c792abb5f444da2b5aa7f0b9b0d4, type: 2}
       _skillColliderObj: {fileID: 3119300605709357607, guid: 08d987eacefc24045959e97db166b5bd, type: 3}
@@ -75,6 +79,7 @@ MonoBehaviour:
       _skillEndTime: 1000
       _skillDurationTime: 800
       _skillSpeed: 10
+      _skillDetail: "\u30B3\u30B9\u30D1\u306F\u60AA\u3044\u304C\u6027\u80FD\u306E\u826F\u3044\u30B9\u30AD\u30EB\u653B\u6483"
       _skillTypeName: SkillTypeA
       _skillAnimation: {fileID: 7400000, guid: 6b0522ca9a4adbf4f9779365eb30579f, type: 2}
       _skillColliderObj: {fileID: 6815398643842173616, guid: b64e6d2cb53a30a4098aa04adb8b0132, type: 3}
@@ -88,6 +93,7 @@ MonoBehaviour:
       _skillEndTime: 100
       _skillDurationTime: 5000
       _skillSpeed: 0
+      _skillDetail: "\u524D\u65B9\u306B\u56DE\u5FA9\u30A8\u30EA\u30A2\u3092\u8A2D\u7F6E"
       _skillTypeName: SkillTypeE
       _skillAnimation: {fileID: 7400000, guid: 84e1eec378230304fbcc7cf5e4cadae6, type: 2}
       _skillColliderObj: {fileID: 436322673971134063, guid: 334c0ba978877544cabf6cf6b1a863da, type: 3}

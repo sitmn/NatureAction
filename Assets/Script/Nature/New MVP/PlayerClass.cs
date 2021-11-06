@@ -137,11 +137,10 @@ public class PlayerStatus
         }
     }
 
-
-    public List<Skill> _playerSkillList;
+    //スキル習得か未収得かを判別
+    public bool[] _playerSkillList;
+    //装備しているスキル
     public Skill[] _playerSkill = new Skill[ConstValue._skillSetMax];
-    public List<Item> _playerItemList;
-    public Equipment _playerEquipment;
     public GameObject _attackColliderObj;
     public AudioClip _attackAudio;
     public AudioClip _damageAudio;
@@ -161,6 +160,8 @@ public class PlayerStatus
                       , AudioClip _attackAudio
                       , AudioClip _damageAudio)
     {
+        SkillData _skillData = Resources.Load("SkillData") as SkillData;
+
         _maxHealth = _initialHealth;
         _health = _maxHealth;
         _maxHp = _initialHp;
@@ -176,9 +177,12 @@ public class PlayerStatus
         _playerUseSkillNo = 0;
         this._attackSpeed = _attackSpeed;
 
-        _playerSkillList = new List<Skill>();
-        _playerItemList = new List<Item>();
-        _playerEquipment = new Equipment();
+        _playerSkillList = new bool[_skillData.sheets[0].list.Count];
+        for(int i = 0; i < _playerSkill.Length; i++)
+        {
+            _playerSkillList[i] = false;
+        }
+
         this._attackColliderObj = _attackColliderObj;
         this._attackAudio = _attackAudio;
         this._damageAudio = _damageAudio;

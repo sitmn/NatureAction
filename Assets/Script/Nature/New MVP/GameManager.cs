@@ -44,14 +44,6 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Singleton();
-
-        InitializePlayerStatus();
-
-        //初期スキルセット
-        InstantiateSkill();
-        _playerOperate = 0;
-
-
     }
 
     void Start()
@@ -59,7 +51,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void Singleton()
+    public void Singleton()
     {
         if (Instance == null)
             Instance = this;
@@ -69,7 +61,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    private void InitializePlayerStatus()
+    public void InitializePlayerStatus()
     {
         _playerStatus = new PlayerStatus[ConstValue._playerAmount];
         InitialPlayerStatusData _initialPlayerStatusData;
@@ -98,18 +90,16 @@ public class GameManager : MonoBehaviour
         _dayManage = new DayManage();
     }
 
-    private void InstantiateSkill()
+    public void InstantiateSkill()
     {
-        SkillData _skillData;
-        _skillData = Resources.Load("SkillData") as SkillData;
-        SkillScript _skillScr = new SkillScript();
+        SkillScript _skillScr = GameObject.Find("SkillScreen").GetComponent<SkillScript>();
 
         //初期スキルを習得してセット
         for (int i = 0; i < ConstValue._skillSetMax; i++)
         {
             for (int j = 0; j < ConstValue._playerAmount; j++)
             {
-                _skillScr.SkillObtain(_skillData, j, i);
+                _skillScr.SkillObtain(j, i);
                 _skillScr.SkillSet(j, i, i);
             }
         }

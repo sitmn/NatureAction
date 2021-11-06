@@ -58,7 +58,8 @@ public class SkillData_importer : AssetPostprocessor {
 					cell = row.GetCell(5); p._skillEndTime = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(6); p._skillDurationTime = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(7); p._skillSpeed = (float)(cell == null ? 0 : cell.NumericCellValue);
-					cell = row.GetCell(8); p._skillTypeName = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(8); p._skillDetail = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(9); p._skillTypeName = (cell == null ? "" : cell.StringCellValue);
 						s.list.Add (p);
 					}
 					data.sheets.Add(s);

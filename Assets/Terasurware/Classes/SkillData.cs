@@ -25,6 +25,7 @@ public class SkillData : ScriptableObject
 		public int _skillEndTime;
 		public int _skillDurationTime;
 		public float _skillSpeed;
+		public string _skillDetail;
 		public string _skillTypeName;
 		public AnimationClip _skillAnimation;
 		public GameObject _skillColliderObj;
