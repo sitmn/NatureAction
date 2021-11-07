@@ -19,7 +19,20 @@ public class StatusBarModel : MonoBehaviour
 
     private void Start()
     {
-        for(int i = 0; i < ConstValue._playerAmount; i++)
+        //体力に応じてHPMPを減らす
+        SetInstantiateStatus();
+
+        //現在体力に応じてHPとMPが減る
+        for (int i = 0; i < ConstValue._playerAmount; i++)
+        {
+            GameManager.Instance._playerStatus[i].Hp = (int)((float)GameManager.Instance._playerStatus[i].MaxHp
+                * (float)GameManager.Instance._playerStatus[i].Health / GameManager.Instance._playerStatus[i].MaxHealth);
+
+            GameManager.Instance._playerStatus[i].Mp = (int)((float)GameManager.Instance._playerStatus[i].MaxMp
+                * (float)GameManager.Instance._playerStatus[i].Health / GameManager.Instance._playerStatus[i].MaxHealth);
+        }
+
+        for (int i = 0; i < ConstValue._playerAmount; i++)
         {
             //HpBarのストリームを作成
             GameManager.Instance._playerStatus[i].ReactiveHp
@@ -33,9 +46,24 @@ public class StatusBarModel : MonoBehaviour
                 .Subscribe((x) => { SetMpUI(x, GameManager.Instance.PlayerOperate); })
                 .AddTo(this);
         }
+
         //キャラ1のみStatusゲージをセット
-        InitializeSetUI(GameManager.Instance._playerStatus[0].MaxHp, GameManager.Instance._playerStatus[0].MaxMp, 0);
+        InitializeSetUI(GameManager.Instance._playerStatus[0].Hp, GameManager.Instance._playerStatus[0].Mp, 0);
     }
+
+    private void SetInstantiateStatus()
+    {
+        //現在体力に応じてHPとMPが減る
+        for (int i = 0; i < ConstValue._playerAmount; i++)
+        {
+            GameManager.Instance._playerStatus[i].Hp = (int)((float)GameManager.Instance._playerStatus[i].MaxHp
+                * (float)GameManager.Instance._playerStatus[i].Health / GameManager.Instance._playerStatus[i].MaxHealth);
+
+            GameManager.Instance._playerStatus[i].Mp = (int)((float)GameManager.Instance._playerStatus[i].MaxMp
+                * (float)GameManager.Instance._playerStatus[i].Health / GameManager.Instance._playerStatus[i].MaxHealth);
+        }
+    }
+
 
     private void InitializeSetUI(int _hpMax, int _mpMax, int _playerOperate)
     {

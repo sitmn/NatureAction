@@ -74,4 +74,10 @@ public static class ConstValue
 
     //敵の停止中回転速度
     public const float _enemyrotateSpeed = 3f;
+
+
+    //クリア時の日数経過
+    public const int _clearProgressDay = 3;
+    //ゲームオーバー時の日数経過
+    public const int _gameoverProgressDay = 7;
 }

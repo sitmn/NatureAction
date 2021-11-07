@@ -44,11 +44,17 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Singleton();
+
+        
     }
 
     void Start()
     {
+        GameManager.Instance.InitializePlayerStatus();
 
+        //初期スキルセット
+        GameManager.Instance.InstantiateSkill();
+        GameManager.Instance.PlayerOperate = 0;
     }
 
     public void Singleton()

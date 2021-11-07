@@ -143,6 +143,9 @@ public class EnemyController : MonoBehaviour
 
     private void EnemyDestroy()
     {
+        //マップから敵を削除
+        MapManager._mapEnemyCount.Value -= 1;
+
         //プレイヤーのリアクティブプロパティのお金、魔石の値を上昇
         //破壊アニメーション
         Destroy(gameObject);

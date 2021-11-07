@@ -101,13 +101,21 @@ public class Presenter : MonoBehaviour
     UseMagicStoneStruct _useMagicStone;
     /**************************************************/
 
+    /**********************効果音**********************/
+    private SE _SEScr;
+    [SerializeField]
+    private AudioClip _decisionSE;
+    /**************************************************/
+
+    /********************** BGM ***********************/
+    [SerializeField]
+    private NatureBGM _BGMScr;
+    /**************************************************/
+
     private void Awake()
     {
-        GameManager.Instance.InitializePlayerStatus();
-
-        //初期スキルセット
-        GameManager.Instance.InstantiateSkill();
-        GameManager.Instance.PlayerOperate = 0;
+        //スキルスクリーンは初期化があるので一旦表示
+        _skillScr.gameObject.SetActive(true);
     }
 
 
@@ -116,6 +124,8 @@ public class Presenter : MonoBehaviour
     {
         systemData = Resources.Load("SystemData") as SystemData;
         _skillData = Resources.Load("SkillData") as SkillData;
+
+        _SEScr = GetComponent<SE>();
         
         ButtonViewChangeSkill = _skillScr.SkillButtonSet();
 
@@ -141,7 +151,6 @@ public class Presenter : MonoBehaviour
             _buttonStream._allButtonObservableArray[n] = _buttonStream._allButtonArray[n].OnClickAsObservable()
                 .TakeUntilDestroy(_buttonStream._allButtonArray[n].gameObject)
                 .Select(_ => _buttonStream._allButtonViewList[n]);
-                
         }
         
         //ボタン同時押し防止のためにストリームをマージ
@@ -158,6 +167,9 @@ public class Presenter : MonoBehaviour
 
 
         _trainingCalculateScr = new TrainingCalculateScript();
+
+        //BGMを流す
+        _BGMScr.PlayBGM(null);
     }
 
     
@@ -166,6 +178,8 @@ public class Presenter : MonoBehaviour
     //ボタン毎に処理割り振り:buttonNoで判定
     private void ButtonAction(ButtonViewBase _buttonViewBase)
     {
+        _SEScr.PlaySE(_decisionSE);
+
         if (_buttonViewBase.ButtonNo == 0)
         {
             ScreenChange(_buttonViewBase);
@@ -250,7 +264,9 @@ public class Presenter : MonoBehaviour
                 ActiveCanvasGroup = _buttonViewScreenChange.NextCanvasGroup;
                 _buttonActiveFlag = true;
             });
-        
+
+        //BGMを流す
+        _BGMScr.PlayBGM(_buttonViewScreenChange.NextCanvasGroup);
     }
 
 
@@ -425,7 +441,13 @@ public class Presenter : MonoBehaviour
 
         if (_selectMoveButtonView.DestinationNo == 0)
         {
-            SceneManager.LoadScene("Dungeon");
+            SceneManager.LoadScene("Dungeon1");
+        }else if (_selectMoveButtonView.DestinationNo == 1)
+        {
+            SceneManager.LoadScene("Dungeon2");
+        }else if(_selectMoveButtonView.DestinationNo == 2)
+        {
+            SceneManager.LoadScene("Dungeon3");
         }
     }
 

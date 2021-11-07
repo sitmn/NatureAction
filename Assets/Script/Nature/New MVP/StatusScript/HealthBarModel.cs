@@ -18,8 +18,9 @@ public class HealthBarModel : MonoBehaviour
         int[] _healthPoint = new int[ConstValue._playerAmount];
         for(int i = 0;i < _healthPoint.Length; i++)
         {
+            Debug.Log(GameManager.Instance._playerStatus[i].Health + "プレイヤー" + i);
             _healthPoint[i] = GameManager.Instance._playerStatus[i].Health - _tired._tiredPoint[i];
-            _hpBarTr[i].DOScaleX((float)_healthPoint[i] / 100f, ConstValue._textChangeTime);
+            _hpBarTr[i].DOScaleX((float)_healthPoint[i] / GameManager.Instance._playerStatus[i].MaxHealth, ConstValue._textChangeTime);
 
             GameManager.Instance._playerStatus[i].Health = _healthPoint[i];
         }

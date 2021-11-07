@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private PlayerAnimation[] _playerAnimation;
 
+    [SerializeField]
+    private MapManager _mapManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -207,6 +210,6 @@ public class PlayerController : MonoBehaviour
     private void CharDeath()
     {
         if (GameManager.Instance._playerStatus[GetNextCharNo()].Hp > 0) PlayerCharChange();
-        else { Debug.Log("ゲームオーバー"); }//ボタンを押してタイトルに 
+        else { _mapManager.StageGameOver(); }//ボタンを押してタイトルに 
     }
 }
