@@ -96,9 +96,21 @@ public class JuelController : MonoBehaviour
     {
         //マップから敵を削除
         MapManager._mapEnemyCount.Value -= 1;
+        //魔石をドロップ
+        StoneDrop();
+
         //プレイヤーのリアクティブプロパティのお金、魔石の値を上昇
         //破壊アニメーション
 
         Destroy(gameObject);
+    }
+
+    private void StoneDrop()
+    {
+        MagicStoneDisplayModel._magicStone[0].Value += EnemyStatus._juelStatusData.sheets[0].list[_juelNo]._dropPurpleStone;
+        MagicStoneDisplayModel._magicStone[1].Value += EnemyStatus._juelStatusData.sheets[0].list[_juelNo]._dropRedStone;
+        MagicStoneDisplayModel._magicStone[2].Value += EnemyStatus._juelStatusData.sheets[0].list[_juelNo]._dropBlueStone;
+        MagicStoneDisplayModel._magicStone[3].Value += EnemyStatus._juelStatusData.sheets[0].list[_juelNo]._dropGreenStone;
+        MagicStoneDisplayModel._magicStone[4].Value += EnemyStatus._juelStatusData.sheets[0].list[_juelNo]._dropYellowStone;
     }
 }

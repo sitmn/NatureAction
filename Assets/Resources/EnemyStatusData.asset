@@ -16,8 +16,8 @@ MonoBehaviour:
   - name: Sheet1
     list:
     - _enemyName: bat
-      _enemyMaxHp: 30
-      _enemyAttack: 20
+      _enemyMaxHp: 100
+      _enemyAttack: 25
       _enemyDefense: 1
       _enemySpeed: 10
       _enemyDistance: 3
@@ -26,12 +26,17 @@ MonoBehaviour:
       _enemyAttackSpeed: 0.03
       _enemyAttackRange: 1
       _enemySearchRange: 3
+      _dropPurpleStone: 50
+      _dropRedStone: 30
+      _dropBlueStone: 10
+      _dropGreenStone: 0
+      _dropYellowStone: 0
       _enemyAttackAudio: {fileID: 8300000, guid: 6f3417e85935e2945874b54b53aefd2e, type: 3}
       _enemyDamageAudio: {fileID: 8300000, guid: f9de7538722fc9649b747259b354e896, type: 3}
     - _enemyName: rich
-      _enemyMaxHp: 100
-      _enemyAttack: 50
-      _enemyDefense: 10
+      _enemyMaxHp: 300
+      _enemyAttack: 100
+      _enemyDefense: 40
       _enemySpeed: 7
       _enemyDistance: 5
       _enemyAttackDurationTime: 2000
@@ -39,5 +44,28 @@ MonoBehaviour:
       _enemyAttackSpeed: 0.08
       _enemyAttackRange: 2
       _enemySearchRange: 8
+      _dropPurpleStone: 0
+      _dropRedStone: 20
+      _dropBlueStone: 30
+      _dropGreenStone: 100
+      _dropYellowStone: 100
+      _enemyAttackAudio: {fileID: 8300000, guid: 6f3417e85935e2945874b54b53aefd2e, type: 3}
+      _enemyDamageAudio: {fileID: 8300000, guid: f9de7538722fc9649b747259b354e896, type: 3}
+    - _enemyName: golem
+      _enemyMaxHp: 2000
+      _enemyAttack: 300
+      _enemyDefense: 200
+      _enemySpeed: 5
+      _enemyDistance: 5
+      _enemyAttackDurationTime: 1000
+      _enemyAttackEndTime: 3000
+      _enemyAttackSpeed: 0.08
+      _enemyAttackRange: 5
+      _enemySearchRange: 7
+      _dropPurpleStone: 3000
+      _dropRedStone: 3000
+      _dropBlueStone: 3000
+      _dropGreenStone: 3000
+      _dropYellowStone: 3000
       _enemyAttackAudio: {fileID: 8300000, guid: 6f3417e85935e2945874b54b53aefd2e, type: 3}
       _enemyDamageAudio: {fileID: 8300000, guid: f9de7538722fc9649b747259b354e896, type: 3}

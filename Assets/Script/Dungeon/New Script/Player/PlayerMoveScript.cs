@@ -11,10 +11,17 @@ public class PlayerMoveScript : MonoBehaviour
     [SerializeField]
     public CharacterController[] _playerCharController;
 
+    private void Start()
+    {
+
+    }
+
     //プレイヤーの移動
     public void PlayerMove(Vector3 _moveVector3)
     {
-        _moveVector3 = Time.deltaTime * _moveVector3 * ConstValue._playerSpeed;
+        Debug.Log(_moveVector3 + "GGGGG");
+        _moveVector3 = Time.deltaTime * _moveVector3 
+            * (ConstValue._playerSpeed + (float)GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].Speed * ConstValue._playerSpeedMagnification);
 
         _playerCharController[GameManager.Instance.PlayerOperate].Move(_moveVector3);
     }

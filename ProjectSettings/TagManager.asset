@@ -9,6 +9,7 @@ TagManager:
   - Juel
   - searchArea
   - PlayerAttack
+  - PlayerHeal
   layers:
   - Default
   - TransparentFX

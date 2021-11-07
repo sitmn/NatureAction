@@ -61,6 +61,11 @@ public class EnemyStatusData_importer : AssetPostprocessor {
 					cell = row.GetCell(8); p._enemyAttackSpeed = (float)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(9); p._enemyAttackRange = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(10); p._enemySearchRange = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(11); p._dropPurpleStone = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(12); p._dropRedStone = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(13); p._dropBlueStone = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(14); p._dropGreenStone = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(15); p._dropYellowStone = (int)(cell == null ? 0 : cell.NumericCellValue);
 						s.list.Add (p);
 					}
 					data.sheets.Add(s);

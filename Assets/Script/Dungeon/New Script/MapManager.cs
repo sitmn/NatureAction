@@ -10,16 +10,25 @@ public class MapManager : MonoBehaviour
     [SerializeField]
     private GameObject _parentEnemyObj;
 
+    //敵の残数変動用スクリプト
+    [SerializeField]
+    private RemainEnemyCount _remainEnemyCount;
+
     private void Start()
     {
         //敵をカウント
-        _mapEnemyCount = new ReactiveProperty<int>(_parentEnemyObj.GetComponent<Transform>().GetChildCount());
+        _mapEnemyCount = new ReactiveProperty<int>(_parentEnemyObj.GetComponent<Transform>().childCount);
 
-        //敵が0になったらステージクリア
+        //敵数カウントダウン、敵が0になったらステージクリア
         _mapEnemyCount
-            .Where((x) => x <= 0)
-            .Subscribe((_) => StageClear())
+            .Subscribe((x) => {
+                if (x > 0) _remainEnemyCount.RemainEnemyCountSet();
+                else StageClear();
+                 })
             .AddTo(this);
+
+        //操作キャラを1に
+        GameManager.Instance.PlayerOperate = 0;
     }
 
     //敵を全て倒すとステージクリアと表示され、Natureシーンへ

@@ -26,6 +26,11 @@ public class JuelStatusData : ScriptableObject
 		public int _juelAttackSpan;
 		public float _juelAttackRangeMagnification;
 		public int _juelSearchRange;
+		public int _dropPurpleStone;
+		public int _dropRedStone;
+		public int _dropBlueStone;
+		public int _dropGreenStone;
+		public int _dropYellowStone;
 		public AudioClip _juelAttackAudio;
 		public AudioClip _juelDamageAudio;
 	}

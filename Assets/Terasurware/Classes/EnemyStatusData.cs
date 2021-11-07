@@ -28,6 +28,11 @@ public class EnemyStatusData : ScriptableObject
 		public float _enemyAttackSpeed;
 		public int _enemyAttackRange;
 		public int _enemySearchRange;
+		public int _dropPurpleStone;
+		public int _dropRedStone;
+		public int _dropBlueStone;
+		public int _dropGreenStone;
+		public int _dropYellowStone;
 		public AudioClip _enemyAttackAudio;
 		public AudioClip _enemyDamageAudio;
 	}

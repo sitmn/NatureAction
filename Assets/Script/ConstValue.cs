@@ -50,7 +50,8 @@ public static class ConstValue
     /*****************DungeonScene************************/
     //キャラクターの移動と回転速度
     public const float _rotateSpeed = 15f;
-    public const float _playerSpeed = 8f;
+    public const float _playerSpeed = 3.5f;
+    public const float _playerSpeedMagnification = 0.02f;
 
     //カメラの回転速度
     public const float _cameraRotateSpeed = 1f;

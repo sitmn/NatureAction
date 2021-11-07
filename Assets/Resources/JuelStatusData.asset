@@ -24,6 +24,11 @@ MonoBehaviour:
       _juelAttackSpan: 500
       _juelAttackRangeMagnification: 1
       _juelSearchRange: 30
+      _dropPurpleStone: 1500
+      _dropRedStone: 500
+      _dropBlueStone: 500
+      _dropGreenStone: 500
+      _dropYellowStone: 500
       _juelAttackAudio: {fileID: 8300000, guid: 6f3417e85935e2945874b54b53aefd2e, type: 3}
       _juelDamageAudio: {fileID: 8300000, guid: f9de7538722fc9649b747259b354e896, type: 3}
     - _juelName: aquamarine
@@ -35,5 +40,26 @@ MonoBehaviour:
       _juelAttackSpan: 1000
       _juelAttackRangeMagnification: 1.5
       _juelSearchRange: 20
-      _juelAttackAudio: {fileID: 0}
-      _juelDamageAudio: {fileID: 0}
+      _dropPurpleStone: 500
+      _dropRedStone: 2000
+      _dropBlueStone: 800
+      _dropGreenStone: 800
+      _dropYellowStone: 800
+      _juelAttackAudio: {fileID: 8300000, guid: 6f3417e85935e2945874b54b53aefd2e, type: 3}
+      _juelDamageAudio: {fileID: 8300000, guid: f9de7538722fc9649b747259b354e896, type: 3}
+    - _juelName: emerald
+      _juelMaxHp: 800
+      _juelAttack: 150
+      _juelDefense: 40
+      _juelAttackDurationTime: 3000
+      _juelAttackSpeed: 0.15
+      _juelAttackSpan: 800
+      _juelAttackRangeMagnification: 2
+      _juelSearchRange: 40
+      _dropPurpleStone: 2000
+      _dropRedStone: 2000
+      _dropBlueStone: 2000
+      _dropGreenStone: 2000
+      _dropYellowStone: 2000
+      _juelAttackAudio: {fileID: 8300000, guid: 6f3417e85935e2945874b54b53aefd2e, type: 3}
+      _juelDamageAudio: {fileID: 8300000, guid: f9de7538722fc9649b747259b354e896, type: 3}

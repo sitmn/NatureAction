@@ -59,6 +59,11 @@ public class JuelStatusData_importer : AssetPostprocessor {
 					cell = row.GetCell(6); p._juelAttackSpan = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(7); p._juelAttackRangeMagnification = (float)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(8); p._juelSearchRange = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(9); p._dropPurpleStone = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(10); p._dropRedStone = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(11); p._dropBlueStone = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(12); p._dropGreenStone = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(13); p._dropYellowStone = (int)(cell == null ? 0 : cell.NumericCellValue);
 						s.list.Add (p);
 					}
 					data.sheets.Add(s);

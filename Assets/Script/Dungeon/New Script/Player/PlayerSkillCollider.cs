@@ -73,21 +73,45 @@ public class PlayerSkillCollider : MonoBehaviour
         _juelController.JuelHp -= _damage;
     }
 
+    //プレイヤーを回復
+    private void PlayerHeal()
+    {
+        int _heal;
+
+        //スキルの時、スキル倍率を攻撃力にプラス
+        _heal = (int)((float)(GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].Attack)
+                * GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate]._playerSkill[GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].PlayerUseSkillNo].SkillAttackMagnification);
+
+        GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].Hp += _heal;
+    }
+
     void OnTriggerEnter(Collider other)
     {
-        //敵に攻撃が当たった場合
-        if (other.gameObject.tag == "Enemy")
+        if (this.gameObject.tag != "PlayerHeal")
         {
-            if (other.gameObject.GetComponent<EnemyController>() != null)
+            //敵に攻撃が当たった場合
+            if (other.gameObject.tag == "Enemy")
             {
-                DamageEnemy(other.gameObject.GetComponent<EnemyController>());
+                if (other.gameObject.GetComponent<EnemyController>() != null)
+                {
+                    DamageEnemy(other.gameObject.GetComponent<EnemyController>());
+                }
+            }
+            else if (other.gameObject.tag == "Juel")
+            {
+                if (other.gameObject.GetComponent<JuelController>() != null)
+                {
+                    DamageJuel(other.gameObject.GetComponent<JuelController>());
+                }
             }
         }
-        else if (other.gameObject.tag == "Juel")
+        else
         {
-            if (other.gameObject.GetComponent<JuelController>() != null)
+            if (other.gameObject.tag == "Player")
             {
-                DamageJuel(other.gameObject.GetComponent<JuelController>());
+                PlayerHeal();
+
+                Destroy(gameObject);
             }
         }
     }

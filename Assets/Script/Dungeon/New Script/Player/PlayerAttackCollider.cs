@@ -65,6 +65,8 @@ public class PlayerAttackCollider : MonoBehaviour
         _juelController.JuelHp -= _damage;
     }
 
+    
+
     void OnTriggerEnter(Collider other)
     {
         //敵に攻撃が当たった場合
