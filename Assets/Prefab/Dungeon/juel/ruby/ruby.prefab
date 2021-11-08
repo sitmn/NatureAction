@@ -408,7 +408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ccc7e2f1642b00448542ee21f9a34f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actionObj: {fileID: 2753653300846817091, guid: 6ff1350c2a91520479532984ca642474, type: 3}
+  _actionObj: {fileID: 1432956805193176895, guid: 1f0c85b476d404744971c0b63e889a85, type: 3}
   _searchEnemyFlag: 0
   _juelNo: 0
 --- !u!136 &3162214689648045791
@@ -464,7 +464,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
