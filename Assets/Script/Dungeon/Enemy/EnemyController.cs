@@ -62,7 +62,7 @@ public class EnemyController : MonoBehaviour
 
         //攻撃用ストリーム作成
         IDisposable _attackStream = this.UpdateAsObservable()
-            .Where((_) => _searchEnemyFlag && !_actionFlag)
+            .Where((_) => _searchEnemyFlag && !_actionFlag && EventManager._eventFlag.Value == false)
             .ThrottleFirst(TimeSpan.FromMilliseconds(EnemyStatus._enemyStatusData.sheets[0].list[_enemyNo]._enemyAttackDurationTime))
             .Subscribe((_) => EnemyAction())
             .AddTo(this);

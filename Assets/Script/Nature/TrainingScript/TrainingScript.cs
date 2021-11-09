@@ -217,13 +217,15 @@ public class TrainingCalculateScript
         }
 
 
-        //修行ポイント計算　（基礎値×魔石総消費量×係数）
+        //修行ポイント計算　（基礎値×魔石総消費量×係数×現在体力の割合）
         for(int i = 0; i < ConstValue._stoneKind; i++)
         {
             for (int j = 0; j < ConstValue._playerAmount; j++)
             {
                 _trainingStruct._trainingStatusStruct._trainingPoint[i, j] 
-                    = (int)(_trainingStruct._trainingStatusStruct._trainingPoint[i, j] * (1f + (float)_trainingStruct._useMagicStoneStruct._useSumMagicStone / _trainingPointData.sheets[0].list[0]._magicStoneRaito));
+                    = (int)(_trainingStruct._trainingStatusStruct._trainingPoint[i, j] 
+                    * (1f + (float)_trainingStruct._useMagicStoneStruct._useSumMagicStone / _trainingPointData.sheets[0].list[0]._magicStoneRaito) 
+                    * ((float)GameManager.Instance._playerStatus[j].Health / (float)GameManager.Instance._playerStatus[j].MaxHealth));
             }
         }
         

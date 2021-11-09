@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 909fc1ec29dc8ad4f8a5c7f33b6e51db, type: 3}
+  m_Name: EventSendMessageName
+  m_EditorClassIdentifier: 
+  sheets:
+  - name: Sheet1
+    list:
+    - _sendMessageName: GameStart
+      _sceneName: Nature
+      _screenName: HomeScreen
+      _dungeonClearFlag: 1
+    - _sendMessageName: TrainingTutorial
+      _sceneName: Nature
+      _screenName: TrainingScreen
+      _dungeonClearFlag: 1
+    - _sendMessageName: MoveTutorial
+      _sceneName: Nature
+      _screenName: MoveScreen
+      _dungeonClearFlag: 1
+    - _sendMessageName: SkillTutorial
+      _sceneName: Nature
+      _screenName: SkillScreen
+      _dungeonClearFlag: 1
+    - _sendMessageName: Stage1Tutorial
+      _sceneName: Dungeon1
+      _screenName: 
+      _dungeonClearFlag: 1
+    - _sendMessageName: Stage2New
+      _sceneName: Dungeon2
+      _screenName: 
+      _dungeonClearFlag: 1
+    - _sendMessageName: Stage3New
+      _sceneName: Dungeon3
+      _screenName: 
+      _dungeonClearFlag: 1
+    - _sendMessageName: Stage1Clear
+      _sceneName: Nature
+      _screenName: HomeScreen
+      _dungeonClearFlag: 0
+    - _sendMessageName: Stage2Clear
+      _sceneName: Nature
+      _screenName: HomeScreen
+      _dungeonClearFlag: 0
+    - _sendMessageName: Stage3Clear
+      _sceneName: Nature
+      _screenName: HomeScreen
+      _dungeonClearFlag: 0

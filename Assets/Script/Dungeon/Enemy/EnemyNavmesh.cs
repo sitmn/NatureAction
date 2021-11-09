@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UniRx;
 
 public class EnemyNavmesh : MonoBehaviour
 {
@@ -16,6 +17,22 @@ public class EnemyNavmesh : MonoBehaviour
     {
         _navmeshAgent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        //会話イベントストリーム（NavmeshAgent停止用）
+        EventManager._eventFlag.Subscribe((x) =>
+        {
+            if (x == true)
+            {
+                _navmeshAgent.Stop(true);
+            }
+            else
+            {
+                _navmeshAgent.Resume();
+            }
+        }).AddTo(this);
     }
 
     // Update is called once per frame

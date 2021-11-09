@@ -53,7 +53,7 @@ public class JuelController : MonoBehaviour
 
         //攻撃用ストリーム作成
         IDisposable _attackStream = this.UpdateAsObservable()
-            .Where((_) => _searchEnemyFlag)
+            .Where((_) => _searchEnemyFlag && EventManager._eventFlag.Value == false)
             .ThrottleFirst(TimeSpan.FromMilliseconds(EnemyStatus._juelStatusData.sheets[0].list[_juelNo]._juelAttackDurationTime))
             .Subscribe((_) => JuelAction())
             .AddTo(this);

@@ -3,9 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UniRx;
+using UnityEngine.UI;
 
 public class MapManager : MonoBehaviour
 {
+    //会話イベントマネージャ
+    private EventManager _eventManager;
+    [SerializeField]
+    private Button _eventSkipButton;
+
     public static ReactiveProperty<int> _mapEnemyCount;
     [SerializeField]
     private GameObject _parentEnemyObj;
@@ -13,6 +19,15 @@ public class MapManager : MonoBehaviour
     //敵の残数変動用スクリプト
     [SerializeField]
     private RemainEnemyCount _remainEnemyCount;
+
+    private void Awake()
+    {
+        _eventManager = new EventManager();
+        _eventManager = GameObject.Find("EventManager").GetComponent<EventManager>();
+
+        _eventManager.ActiveScene = SceneManager.GetActiveScene().name;
+        _eventManager.ActiveScreen = "";
+    }
 
     private void Start()
     {
@@ -27,8 +42,15 @@ public class MapManager : MonoBehaviour
                  })
             .AddTo(this);
 
+        //イベントスキップボタンのストリームを登録
+        _eventSkipButton.OnClickAsObservable()
+            .Subscribe(_ => _eventManager.EventSkip());
+
         //操作キャラを1に
         GameManager.Instance.PlayerOperate = 0;
+
+        //会話イベント
+        _eventManager.EventSendMessage();
     }
 
     //敵を全て倒すとステージクリアと表示され、Natureシーンへ
@@ -39,6 +61,9 @@ public class MapManager : MonoBehaviour
         NextDayUpdate(ConstValue._clearProgressDay);
         //体力をMAXまで回復
         PlayerHealthReset();
+
+        //会話イベント用のクリアフラグ更新
+        DungeonClearFlag();
 
         SceneManager.LoadScene("Nature");
     }
@@ -63,6 +88,20 @@ public class MapManager : MonoBehaviour
         for(int i = 0; i < ConstValue._playerAmount; i++)
         {
             GameManager.Instance._playerStatus[i].Health = GameManager.Instance._playerStatus[i].MaxHealth;
+        }
+    }
+
+    private void DungeonClearFlag()
+    {
+        if(_eventManager.ActiveScreen == "Dungeon1")
+        {
+            GameManager.Instance._eventData.DungeonClearFlag[7] = true;
+        }else if (_eventManager.ActiveScreen == "Dungeon2")
+        {
+            GameManager.Instance._eventData.DungeonClearFlag[8] = true;
+        }else if (_eventManager.ActiveScreen == "Dungeon3")
+        {
+            GameManager.Instance._eventData.DungeonClearFlag[9] = true;
         }
     }
 }

@@ -43,7 +43,7 @@ public class InputPlayerProvider : MonoBehaviour, IInputPlayerProvider
         this.UpdateAsObservable()
             .Select((_) => _inputAttack.triggered)
             .Skip(1)
-            .Where(_ => _coolTimeFlag)
+            .Where(_ => _coolTimeFlag && EventManager._eventFlag.Value == false)
             .Subscribe((x) => {
                 if (x)
                 {
@@ -58,7 +58,8 @@ public class InputPlayerProvider : MonoBehaviour, IInputPlayerProvider
         this.UpdateAsObservable()
             .Select((_) => _inputSkill.triggered)
             .Skip(1)
-            .Where(_ => _coolTimeFlag && GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].Mp >= GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate]._playerSkill[GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].PlayerUseSkillNo]._skillMp)
+            .Where(_ => _coolTimeFlag && GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].Mp >= GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate]._playerSkill[GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].PlayerUseSkillNo]._skillMp
+                        && EventManager._eventFlag.Value == false)
             .Subscribe((x) => {
                 if (x)
                 {
@@ -74,7 +75,7 @@ public class InputPlayerProvider : MonoBehaviour, IInputPlayerProvider
         this.UpdateAsObservable()
             .Select((_) => _inputSkillChange.triggered)
             .Skip(1)
-            .Where(_ => _coolTimeFlag)
+            .Where(_ => _coolTimeFlag && EventManager._eventFlag.Value == false)
             .Subscribe((x) => {
                 if (x)
                 {
@@ -89,7 +90,8 @@ public class InputPlayerProvider : MonoBehaviour, IInputPlayerProvider
         this.UpdateAsObservable()
             .Select((_) => _inputCharChange.triggered)
             .Skip(1)
-            .Where(_ => _coolTimeFlag && GameManager.Instance._playerStatus[PlayerController.GetNextCharNo()].Hp > 0)
+            .Where(_ => _coolTimeFlag && GameManager.Instance._playerStatus[PlayerController.GetNextCharNo()].Hp > 0
+                        && EventManager._eventFlag.Value == false)
             .Subscribe((x) => {
                 if (x)
                 {
@@ -103,7 +105,7 @@ public class InputPlayerProvider : MonoBehaviour, IInputPlayerProvider
         //移動用入力でのイベント発行
         this.UpdateAsObservable()
             .Select((_) => ToVector3_XZ(_inputMove.ReadValue<Vector2>()))
-            .Where(_ => _coolTimeFlag)
+            .Where(_ => _coolTimeFlag && EventManager._eventFlag.Value == false)
             .Subscribe((x) =>
             {
                 //他のイベント発行を無効にし、攻撃実行

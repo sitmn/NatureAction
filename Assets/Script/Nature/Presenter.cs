@@ -12,6 +12,13 @@ public class Presenter : MonoBehaviour
 {
     private SystemData systemData;
 
+    /*******************イベント管理*******************/
+    [SerializeField]
+    private EventManager _eventManager;
+    [SerializeField]
+    private Button _eventSkipButton;
+    /**************************************************/
+
     /******************** 画面情報 ********************/
     //現在表示されている画面
     [SerializeField]
@@ -116,6 +123,10 @@ public class Presenter : MonoBehaviour
     {
         //スキルスクリーンは初期化があるので一旦表示
         _skillScr.gameObject.SetActive(true);
+
+        //シーン開始時のシーンとスクリーン
+        _eventManager.ActiveScene = "Nature";
+        _eventManager.ActiveScreen = "HomeScreen";
     }
 
 
@@ -153,9 +164,9 @@ public class Presenter : MonoBehaviour
                 .Select(_ => _buttonStream._allButtonViewList[n]);
         }
         
-        //ボタン同時押し防止のためにストリームをマージ
+        //ボタン同時押し防止のためにストリームをマージ、また、会話イベント時は無効
         Observable.Merge(_buttonStream._allButtonObservableArray)
-                .Where((_) => _buttonActiveFlag)
+                .Where((_) => _buttonActiveFlag && EventManager._eventFlag.Value == false)
                 .Subscribe((x) => ButtonAction(x));
 
 
@@ -165,11 +176,17 @@ public class Presenter : MonoBehaviour
             .Subscribe(_ => {
                 TimeLineStart(_trainingConfirmDirector);});
 
+        //イベントスキップボタンのストリームを登録
+        _eventSkipButton.OnClickAsObservable()
+            .Subscribe(_ => _eventManager.EventSkip());
 
         _trainingCalculateScr = new TrainingCalculateScript();
 
         //BGMを流す
         _BGMScr.PlayBGM(null);
+
+        //シーン移動時の会話イベント
+        _eventManager.EventSendMessage();
     }
 
     
@@ -262,6 +279,12 @@ public class Presenter : MonoBehaviour
 
                 ActiveCanvasGroup.gameObject.SetActive(false);
                 ActiveCanvasGroup = _buttonViewScreenChange.NextCanvasGroup;
+
+                //flowchartに現在のスクリーン情報を渡す
+                _eventManager.ActiveScreen = ActiveCanvasGroup.name;
+                //スクリーン移動時の会話イベント
+                _eventManager.EventSendMessage();
+
                 _buttonActiveFlag = true;
             });
 
@@ -417,7 +440,7 @@ public class Presenter : MonoBehaviour
         _buttonActiveFlag = true;
     }
 
-    //ボタンNo3：修行選択ボタン
+    //ボタンNo3：移動選択ボタン
     private void MoveSelect(ButtonViewBase _buttonViewBase)
     {
         Action<ButtonViewBase> _buttonSelectInMethod = MoveButtonViewSelect;
@@ -425,7 +448,7 @@ public class Presenter : MonoBehaviour
         ButtonSelect(_buttonViewBase, ButtonViewMoveArray, _buttonSelectInMethod);
     }
 
-    //ボタンNo4：修行確定ボタン
+    //ボタンNo4：移動確定ボタン
     private void MoveButtonConfirm()
     {
         if (_selectMoveButtonView == null) return;

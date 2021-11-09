@@ -32,6 +32,9 @@ public class GameManager : MonoBehaviour
 
     //日付情報を保持
     public DayManage _dayManage;
+
+    //会話イベント情報を保持
+    public EventData _eventData;
     
     /*************************************************************************/
 
@@ -45,16 +48,26 @@ public class GameManager : MonoBehaviour
     {
         Singleton();
 
-        
+
+        //会話イベントクラスの初期化
+        EventSendMessageNameData _eventSendMessageData = Resources.Load("EventSendMessageName") as EventSendMessageNameData;
+        bool[] _dungeonClearFlag = new bool[_eventSendMessageData.sheets[0].list.Count];
+        for(int i = 0; i< _eventSendMessageData.sheets[0].list.Count; i++)
+        {
+            _dungeonClearFlag[i] = _eventSendMessageData.sheets[0].list[i]._dungeonClearFlag;
+        }
+
+
+        _eventData = new EventData(_dungeonClearFlag);
     }
 
     void Start()
     {
-        GameManager.Instance.InitializePlayerStatus();
+        InitializePlayerStatus();
 
         //初期スキルセット
-        GameManager.Instance.InstantiateSkill();
-        GameManager.Instance.PlayerOperate = 0;
+        InstantiateSkill();
+        PlayerOperate = 0;
     }
 
     public void Singleton()
