@@ -34,6 +34,9 @@ public class EventManager : MonoBehaviour
         set { _activeScreen = value; }
     }
 
+    [SerializeField]
+    private GameObject[] _tutorialPointer;
+
 
     private void Awake()
     {
@@ -81,7 +84,22 @@ public class EventManager : MonoBehaviour
         // 現在のブロックを停止する
         _flowchart.StopAllBlocks();
 
+        TutorialPointerHide();
+
         EventFinish();
+    }
+
+    //チュートリアル用のポインタを全て非表示
+    private void TutorialPointerHide()
+    {
+        if(_tutorialPointer != null)
+        {
+            for (int i = 0; i < _tutorialPointer.Length; i++)
+            {
+                _tutorialPointer[i].SetActive(false);
+            }
+        }
+        
     }
 }
 

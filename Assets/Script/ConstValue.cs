@@ -71,7 +71,7 @@ public static class ConstValue
     public const int _coolTimeCharChange = 500;
 
     //キャラのスキルアイコン間距離
-    public const float _skillIconDistance = 80f;
+    public const float _skillIconDistance = 140f;
 
     //敵の停止中回転速度
     public const float _enemyrotateSpeed = 3f;

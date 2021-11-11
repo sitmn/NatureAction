@@ -23,7 +23,7 @@ MonoBehaviour:
       _enemyDistance: 3
       _enemyAttackDurationTime: 2000
       _enemyAttackEndTime: 1000
-      _enemyAttackSpeed: 0.03
+      _enemyAttackSpeed: 0.1
       _enemyAttackRange: 1
       _enemySearchRange: 3
       _dropPurpleStone: 50
@@ -41,7 +41,7 @@ MonoBehaviour:
       _enemyDistance: 5
       _enemyAttackDurationTime: 2000
       _enemyAttackEndTime: 1500
-      _enemyAttackSpeed: 0.08
+      _enemyAttackSpeed: 0.3
       _enemyAttackRange: 2
       _enemySearchRange: 8
       _dropPurpleStone: 0
@@ -59,7 +59,7 @@ MonoBehaviour:
       _enemyDistance: 5
       _enemyAttackDurationTime: 1000
       _enemyAttackEndTime: 3000
-      _enemyAttackSpeed: 0.08
+      _enemyAttackSpeed: 0.05
       _enemyAttackRange: 5
       _enemySearchRange: 7
       _dropPurpleStone: 3000

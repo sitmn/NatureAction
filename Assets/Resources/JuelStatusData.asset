@@ -20,7 +20,7 @@ MonoBehaviour:
       _juelAttack: 50
       _juelDefense: 20
       _juelAttackDurationTime: 3000
-      _juelAttackSpeed: 0.1
+      _juelAttackSpeed: 1
       _juelAttackSpan: 500
       _juelAttackRangeMagnification: 1
       _juelSearchRange: 30
@@ -36,7 +36,7 @@ MonoBehaviour:
       _juelAttack: 30
       _juelDefense: 5
       _juelAttackDurationTime: 3000
-      _juelAttackSpeed: 0.01
+      _juelAttackSpeed: 1
       _juelAttackSpan: 1000
       _juelAttackRangeMagnification: 1.5
       _juelSearchRange: 20
@@ -52,7 +52,7 @@ MonoBehaviour:
       _juelAttack: 150
       _juelDefense: 40
       _juelAttackDurationTime: 3000
-      _juelAttackSpeed: 0.15
+      _juelAttackSpeed: 1
       _juelAttackSpan: 800
       _juelAttackRangeMagnification: 2
       _juelSearchRange: 40

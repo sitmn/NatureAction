@@ -75,6 +75,7 @@ public class EnemyController : MonoBehaviour
                 if (EnemyStatus._enemyStatusData.sheets[0].list[_enemyNo]._enemyDamageAudio != null) _enemySE.PlaySE(EnemyStatus._enemyStatusData.sheets[0].list[_enemyNo]._enemyDamageAudio);
                 if (x > 0)
                 {
+
                     _animator.SetTrigger("Damage");
                 }
                 else
@@ -111,15 +112,14 @@ public class EnemyController : MonoBehaviour
     }
 
     //ナビメッシュ移動を停止
-    private void NavmeshStop()
+    public void NavmeshStop()
     {
         _enemyNavmesh._navmeshAgent.speed = 0f;
         _enemyNavmesh._navmeshAgent.updateRotation = false;
     }
     //ナビメッシュ移動を再開
-    private void NavmeshResume()
+    public void NavmeshResume()
     {
-        Debug.Log("EEE");
         _enemyNavmesh._navmeshAgent.speed = _navSpeed;
         _enemyNavmesh._navmeshAgent.updateRotation = true;
     }
@@ -155,11 +155,11 @@ public class EnemyController : MonoBehaviour
 
     private void StoneDrop()
     {
-        MagicStoneDisplayModel._magicStone[0].Value += EnemyStatus._juelStatusData.sheets[0].list[_enemyNo]._dropPurpleStone;
-        MagicStoneDisplayModel._magicStone[1].Value += EnemyStatus._juelStatusData.sheets[0].list[_enemyNo]._dropRedStone;
-        MagicStoneDisplayModel._magicStone[2].Value += EnemyStatus._juelStatusData.sheets[0].list[_enemyNo]._dropBlueStone;
-        MagicStoneDisplayModel._magicStone[3].Value += EnemyStatus._juelStatusData.sheets[0].list[_enemyNo]._dropGreenStone;
-        MagicStoneDisplayModel._magicStone[4].Value += EnemyStatus._juelStatusData.sheets[0].list[_enemyNo]._dropYellowStone;
+        MagicStoneDisplayModel._magicStone[0].Value += EnemyStatus._enemyStatusData.sheets[0].list[_enemyNo]._dropPurpleStone;
+        MagicStoneDisplayModel._magicStone[1].Value += EnemyStatus._enemyStatusData.sheets[0].list[_enemyNo]._dropRedStone;
+        MagicStoneDisplayModel._magicStone[2].Value += EnemyStatus._enemyStatusData.sheets[0].list[_enemyNo]._dropBlueStone;
+        MagicStoneDisplayModel._magicStone[3].Value += EnemyStatus._enemyStatusData.sheets[0].list[_enemyNo]._dropGreenStone;
+        MagicStoneDisplayModel._magicStone[4].Value += EnemyStatus._enemyStatusData.sheets[0].list[_enemyNo]._dropYellowStone;
     }
 
 }

@@ -734,8 +734,9 @@ GameObject:
   - component: {fileID: 5669329388117445870}
   - component: {fileID: 7905455898044069837}
   - component: {fileID: 8857287831223828212}
+  - component: {fileID: 3276935353257600166}
   m_Layer: 0
-  m_Name: Golem 1
+  m_Name: Golem
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -748,8 +749,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6808089935516517573}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.08, y: 0, z: -12.94}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5344723075919512673}
@@ -963,6 +964,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8632828183a9a14cbbfc44ad2ed192e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &3276935353257600166
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6808089935516517573}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &6808211175359834851
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,7 +1095,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4127205694344459633, guid: edea28cc74ec3e6458582b36a4b6fd69, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.51
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4127205694344459633, guid: edea28cc74ec3e6458582b36a4b6fd69, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1098,11 +1115,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4127205694344459633, guid: edea28cc74ec3e6458582b36a4b6fd69, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 15.48
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4127205694344459633, guid: edea28cc74ec3e6458582b36a4b6fd69, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2.3
+      value: 4.35
       objectReference: {fileID: 0}
     - target: {fileID: 4127205694344459633, guid: edea28cc74ec3e6458582b36a4b6fd69, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
