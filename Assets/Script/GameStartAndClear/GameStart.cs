@@ -11,8 +11,10 @@ public class GameStart : MonoBehaviour
     private AudioClip _gameStartButtonSE;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        
+
 
     }
 
