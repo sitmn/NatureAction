@@ -10,6 +10,7 @@ TagManager:
   - searchArea
   - PlayerAttack
   - PlayerHeal
+  - PlayerSkillAttack
   layers:
   - Default
   - TransparentFX

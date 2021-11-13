@@ -19,7 +19,6 @@ public class PlayerMoveScript : MonoBehaviour
     //プレイヤーの移動
     public void PlayerMove(Vector3 _moveVector3)
     {
-        Debug.Log(_moveVector3 + "GGGGG");
         _moveVector3 = Time.deltaTime * _moveVector3 
             * (ConstValue._playerSpeed + (float)GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].Speed * ConstValue._playerSpeedMagnification);
 

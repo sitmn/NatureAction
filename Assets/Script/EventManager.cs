@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using UnityEngine.UI;
-
+using Fungus;
 public class EventManager : MonoBehaviour
 {
     //会話イベントクラス
@@ -48,7 +48,7 @@ public class EventManager : MonoBehaviour
     //FlowChartへMessageを送る
     public void EventSendMessage()
     {
-        for(int i = 0; i < GameManager.Instance._eventData.EventAlreadyRead.Length; i++)
+        for (int i = 0; i < GameManager.Instance._eventData.EventAlreadyRead.Length; i++)
         {
             if (_activeScene == _eventSendMessageData.sheets[0].list[i]._sceneName
              && _activeScreen == _eventSendMessageData.sheets[0].list[i]._screenName
@@ -60,7 +60,10 @@ public class EventManager : MonoBehaviour
                 //会話イベントを既読に
                 GameManager.Instance._eventData.EventAlreadyRead[i] = true;
                 //スキップボタン表示
-                _eventSkipButton.gameObject.SetActive(true);
+                if(_eventSkipButton != null)
+                {
+                    _eventSkipButton.gameObject.SetActive(true);
+                }
 
                 //Messageを送る
                 _flowchart.SendFungusMessage(_eventSendMessageData.sheets[0].list[i]._sendMessageName);

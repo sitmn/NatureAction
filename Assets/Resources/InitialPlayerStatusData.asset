@@ -18,10 +18,10 @@ MonoBehaviour:
     - "\u5BFE\u8C61\u30D7\u30EC\u30A4\u30E4\u30FC": Player1
       _initialHealth: 100
       _initialHp: 100
-      _initialMp: 20
-      _initialAttack: 10
-      _initialDefense: 5
-      _initialSpeed: 10
+      _initialMp: 50
+      _initialAttack: 20
+      _initialDefense: 7
+      _initialSpeed: 40
       _initialAttackStartTime: 30
       _initialAttackEndTime: 500
       _initialAttackDurationTime: 2000
@@ -32,12 +32,12 @@ MonoBehaviour:
     - "\u5BFE\u8C61\u30D7\u30EC\u30A4\u30E4\u30FC": Player2
       _initialHealth: 100
       _initialHp: 100
-      _initialMp: 50
-      _initialAttack: 5
-      _initialDefense: 3
+      _initialMp: 20
+      _initialAttack: 30
+      _initialDefense: 5
       _initialSpeed: 10
       _initialAttackStartTime: 30
-      _initialAttackEndTime: 500
+      _initialAttackEndTime: 450
       _initialAttackDurationTime: 2000
       _initialAttackSpeed: 10
       _initialAttackColliderObj: {fileID: 7936662561959608051, guid: 291d912513411c64f9837e7832b0f862, type: 3}

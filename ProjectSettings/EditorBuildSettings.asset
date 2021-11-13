@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/GameStart.unity
+    guid: 379432600789dc7428f3f6cc551b6b0a
+  - enabled: 1
     path: Assets/Scenes/Nature.unity
     guid: 658be88ac656b3142873dd92be962be8
   - enabled: 1
@@ -17,5 +20,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Dungeon3.unity
     guid: 5bb3a9a11bb59dc4f9c11905d4adde06
+  - enabled: 1
+    path: Assets/Scenes/GameClear.unity
+    guid: 0cf6cff91ad9be646a4ed12f6ab3b593
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 84c1e6d43fce01f479cab3aeaf90142b, type: 2}

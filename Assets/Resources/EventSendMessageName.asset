@@ -51,7 +51,7 @@ MonoBehaviour:
       _sceneName: Nature
       _screenName: HomeScreen
       _dungeonClearFlag: 0
-    - _sendMessageName: Stage3Clear
-      _sceneName: Nature
-      _screenName: HomeScreen
-      _dungeonClearFlag: 0
+    - _sendMessageName: GameClear
+      _sceneName: GameClear
+      _screenName: GameClearScreen
+      _dungeonClearFlag: 1

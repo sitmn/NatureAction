@@ -65,7 +65,7 @@ public class MapManager : MonoBehaviour
         //会話イベント用のクリアフラグ更新
         DungeonClearFlag();
 
-        SceneManager.LoadScene("Nature");
+        ChangeSceen();
     }
 
     public void StageGameOver()
@@ -102,6 +102,20 @@ public class MapManager : MonoBehaviour
         }else if (_eventManager.ActiveScreen == "Dungeon3")
         {
             GameManager.Instance._eventData.DungeonClearFlag[9] = true;
+        }
+    }
+
+
+    private void ChangeSceen()
+    {
+        //ステージ3クリア時はゲームクリア画面へ、それ以外はメニューへ戻る
+        if (_eventManager.ActiveScreen == "Dungeon3")
+        {
+            SceneManager.LoadScene("GameClear");
+        }
+        else
+        {
+            SceneManager.LoadScene("Nature");
         }
     }
 }

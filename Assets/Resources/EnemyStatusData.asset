@@ -26,9 +26,9 @@ MonoBehaviour:
       _enemyAttackSpeed: 0.1
       _enemyAttackRange: 1
       _enemySearchRange: 3
-      _dropPurpleStone: 50
+      _dropPurpleStone: 20
       _dropRedStone: 30
-      _dropBlueStone: 10
+      _dropBlueStone: 40
       _dropGreenStone: 0
       _dropYellowStone: 0
       _enemyAttackAudio: {fileID: 8300000, guid: 6f3417e85935e2945874b54b53aefd2e, type: 3}
@@ -46,8 +46,8 @@ MonoBehaviour:
       _enemySearchRange: 8
       _dropPurpleStone: 0
       _dropRedStone: 20
-      _dropBlueStone: 30
-      _dropGreenStone: 100
+      _dropBlueStone: 100
+      _dropGreenStone: 30
       _dropYellowStone: 100
       _enemyAttackAudio: {fileID: 8300000, guid: 6f3417e85935e2945874b54b53aefd2e, type: 3}
       _enemyDamageAudio: {fileID: 8300000, guid: f9de7538722fc9649b747259b354e896, type: 3}
@@ -60,7 +60,7 @@ MonoBehaviour:
       _enemyAttackDurationTime: 1000
       _enemyAttackEndTime: 3000
       _enemyAttackSpeed: 0.05
-      _enemyAttackRange: 5
+      _enemyAttackRange: 3
       _enemySearchRange: 7
       _dropPurpleStone: 3000
       _dropRedStone: 3000

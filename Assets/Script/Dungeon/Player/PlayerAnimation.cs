@@ -105,10 +105,17 @@ public class PlayerAnimation : MonoBehaviour
             _playerSE.PlaySE(GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate]._playerSkill[GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].PlayerUseSkillNo].SkillAudioClip);
         }
 
-        GameObject _skillColliderObj = Instantiate(GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate]._playerSkill[GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].PlayerUseSkillNo].SkillColliderObj, this.transform.position + new Vector3(0, 0.5f, 0), this.transform.rotation * Quaternion.AngleAxis(90f, Vector3.right));
-        
+        GameObject _skillColliderObj = Instantiate(GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate]._playerSkill[GameManager.Instance._playerStatus[GameManager.Instance.PlayerOperate].PlayerUseSkillNo].SkillColliderObj, this.transform.position + new Vector3(0, 0.5f, 0), transform.rotation);
+
         //SkillCのみプレイヤー中心に
-        if (_skillColliderObj.name == "SkillTypeC(Clone)") _skillColliderObj.transform.position = this.gameObject.transform.position;
+        if (_skillColliderObj.name == "SkillTypeC(Clone)")
+        {
+            _skillColliderObj.transform.position = this.gameObject.transform.position;
+            _skillColliderObj.transform.rotation = _skillColliderObj.transform.rotation * Quaternion.AngleAxis(90f, Vector3.right);
+        }else if(_skillColliderObj.tag == "PlayerHeal")
+        {
+            _skillColliderObj.transform.position = new Vector3(_skillColliderObj.transform.position.x, 0 , _skillColliderObj.transform.position.z) + this.transform.forward;
+        }
         else _skillColliderObj.transform.position = this.gameObject.transform.position + transform.forward + new Vector3(0, 0.5f, 0);
     }
 

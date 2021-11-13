@@ -47,7 +47,7 @@ public class PlayerSkillCollider : MonoBehaviour
         int _power;
 
         //スキルの時、スキル倍率を攻撃力にプラス
-        if (gameObject.tag == "Attack") _power = GameManager.Instance._playerStatus[_playerOperate].Attack;
+        if (gameObject.tag == "PlayerAttack") _power = GameManager.Instance._playerStatus[_playerOperate].Attack;
         else _power = (int)((float)(GameManager.Instance._playerStatus[_playerOperate].Attack)
                 * GameManager.Instance._playerStatus[_playerOperate]._playerSkill[_skillUseNo].SkillAttackMagnification);
 
