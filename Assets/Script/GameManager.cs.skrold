@@ -85,7 +85,6 @@ public class GameManager : MonoBehaviour
         _playerStatus = new PlayerStatus[ConstValue._playerAmount];
         InitialPlayerStatusData _initialPlayerStatusData;
         _initialPlayerStatusData = Resources.Load("InitialPlayerStatusData") as InitialPlayerStatusData;
-        _initialPlayerStatusData = StaticAssets.SetAssetValue3(_initialPlayerStatusData);
 
         for (int i = 0; i < _playerStatus.Length; i++)
         {

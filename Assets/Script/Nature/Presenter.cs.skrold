@@ -135,7 +135,6 @@ public class Presenter : MonoBehaviour
     {
         systemData = Resources.Load("SystemData") as SystemData;
         _skillData = Resources.Load("SkillData") as SkillData;
-        _skillData = StaticAssets.SetAssetValue1(_skillData);
 
         _SEScr = GetComponent<SE>();
         

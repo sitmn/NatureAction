@@ -50,9 +50,9 @@ MonoBehaviour:
       _consumeGreenStone: 0
       _consumeYellowStone: 0
       _skillAnimation: {fileID: 0}
-      _skillColliderObj: {fileID: 4652917396212523270, guid: 78a8f34406fb5a044baad1e9cb3750c9, type: 3}
+      _skillColliderObj: {fileID: 0}
       _skillImage: {fileID: 0}
-      _skillAudioClip: {fileID: 8300000, guid: 2d9ee57e41262f04d8293ae1d0faa4f6, type: 3}
+      _skillAudioClip: {fileID: 0}
     - _skillName: SkillName3
       _skillMP: 10
       _skillAttackMagnification: 3
@@ -69,9 +69,9 @@ MonoBehaviour:
       _consumeGreenStone: 0
       _consumeYellowStone: 0
       _skillAnimation: {fileID: 0}
-      _skillColliderObj: {fileID: 5416963710049493973, guid: 6e2b12adb3c5e844ebc092d89ec10e45, type: 3}
+      _skillColliderObj: {fileID: 0}
       _skillImage: {fileID: 0}
-      _skillAudioClip: {fileID: 8300000, guid: d17e57c96c7363f408d1438b84dc08e8, type: 3}
+      _skillAudioClip: {fileID: 0}
     - _skillName: SkillName4
       _skillMP: 30
       _skillAttackMagnification: 5
@@ -88,9 +88,9 @@ MonoBehaviour:
       _consumeGreenStone: 400
       _consumeYellowStone: 400
       _skillAnimation: {fileID: 0}
-      _skillColliderObj: {fileID: 3119300605709357607, guid: 08d987eacefc24045959e97db166b5bd, type: 3}
+      _skillColliderObj: {fileID: 0}
       _skillImage: {fileID: 0}
-      _skillAudioClip: {fileID: 8300000, guid: b5051b2e59f84a14f8b40fb65aa7e9cc, type: 3}
+      _skillAudioClip: {fileID: 0}
     - _skillName: SkillName5
       _skillMP: 50
       _skillAttackMagnification: 2.5
@@ -107,9 +107,9 @@ MonoBehaviour:
       _consumeGreenStone: 0
       _consumeYellowStone: 400
       _skillAnimation: {fileID: 0}
-      _skillColliderObj: {fileID: 6815398643842173616, guid: b64e6d2cb53a30a4098aa04adb8b0132, type: 3}
+      _skillColliderObj: {fileID: 0}
       _skillImage: {fileID: 0}
-      _skillAudioClip: {fileID: 8300000, guid: 691156701e0d2164aa5fc794c3f015a9, type: 3}
+      _skillAudioClip: {fileID: 0}
     - _skillName: SkillName6
       _skillMP: 40
       _skillAttackMagnification: 0.3
@@ -126,6 +126,6 @@ MonoBehaviour:
       _consumeGreenStone: 800
       _consumeYellowStone: 0
       _skillAnimation: {fileID: 0}
-      _skillColliderObj: {fileID: 436322673971134063, guid: 334c0ba978877544cabf6cf6b1a863da, type: 3}
+      _skillColliderObj: {fileID: 0}
       _skillImage: {fileID: 0}
-      _skillAudioClip: {fileID: 8300000, guid: e9fc6e3ec22ca594aa516caa4c73f864, type: 3}
+      _skillAudioClip: {fileID: 0}

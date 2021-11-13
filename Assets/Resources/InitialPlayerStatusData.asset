@@ -26,9 +26,9 @@ MonoBehaviour:
       _initialAttackEndTime: 500
       _initialAttackDurationTime: 2000
       _initialAttackSpeed: 10
-      _initialAttackColliderObj: {fileID: 7936662561959608051, guid: 291d912513411c64f9837e7832b0f862, type: 3}
-      _attackAudioClip: {fileID: 8300000, guid: ead7004f6f9735f45bba36237ae60b3e, type: 3}
-      _damageAudioClip: {fileID: 8300000, guid: f9de7538722fc9649b747259b354e896, type: 3}
+      _initialAttackColliderObj: {fileID: 0}
+      _attackAudioClip: {fileID: 0}
+      _damageAudioClip: {fileID: 0}
     - "\u5BFE\u8C61\u30D7\u30EC\u30A4\u30E4\u30FC": Player2
       _initialHealth: 100
       _initialHp: 100
@@ -40,6 +40,6 @@ MonoBehaviour:
       _initialAttackEndTime: 450
       _initialAttackDurationTime: 2000
       _initialAttackSpeed: 10
-      _initialAttackColliderObj: {fileID: 7936662561959608051, guid: 291d912513411c64f9837e7832b0f862, type: 3}
-      _attackAudioClip: {fileID: 8300000, guid: ead7004f6f9735f45bba36237ae60b3e, type: 3}
-      _damageAudioClip: {fileID: 8300000, guid: f9de7538722fc9649b747259b354e896, type: 3}
+      _initialAttackColliderObj: {fileID: 0}
+      _attackAudioClip: {fileID: 0}
+      _damageAudioClip: {fileID: 0}

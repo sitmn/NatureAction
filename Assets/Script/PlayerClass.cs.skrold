@@ -161,7 +161,6 @@ public class PlayerStatus
                       , AudioClip _damageAudio)
     {
         SkillData _skillData = Resources.Load("SkillData") as SkillData;
-        _skillData = StaticAssets.SetAssetValue1(_skillData);
 
         _maxHealth = _initialHealth;
         _health = _maxHealth;

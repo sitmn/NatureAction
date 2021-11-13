@@ -27,7 +27,6 @@ public class SkillScript : MonoBehaviour
     private void Awake()
     {
         _skillData = Resources.Load("SkillData") as SkillData;
-        _skillData = StaticAssets.SetAssetValue1(_skillData);
     }
 
     private void Start()

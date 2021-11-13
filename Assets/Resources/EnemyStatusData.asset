@@ -31,8 +31,8 @@ MonoBehaviour:
       _dropBlueStone: 40
       _dropGreenStone: 0
       _dropYellowStone: 0
-      _enemyAttackAudio: {fileID: 8300000, guid: 6f3417e85935e2945874b54b53aefd2e, type: 3}
-      _enemyDamageAudio: {fileID: 8300000, guid: f9de7538722fc9649b747259b354e896, type: 3}
+      _enemyAttackAudio: {fileID: 0}
+      _enemyDamageAudio: {fileID: 0}
     - _enemyName: rich
       _enemyMaxHp: 300
       _enemyAttack: 100
@@ -49,8 +49,8 @@ MonoBehaviour:
       _dropBlueStone: 100
       _dropGreenStone: 30
       _dropYellowStone: 100
-      _enemyAttackAudio: {fileID: 8300000, guid: 6f3417e85935e2945874b54b53aefd2e, type: 3}
-      _enemyDamageAudio: {fileID: 8300000, guid: f9de7538722fc9649b747259b354e896, type: 3}
+      _enemyAttackAudio: {fileID: 0}
+      _enemyDamageAudio: {fileID: 0}
     - _enemyName: golem
       _enemyMaxHp: 2000
       _enemyAttack: 300
@@ -67,5 +67,5 @@ MonoBehaviour:
       _dropBlueStone: 3000
       _dropGreenStone: 3000
       _dropYellowStone: 3000
-      _enemyAttackAudio: {fileID: 8300000, guid: 6f3417e85935e2945874b54b53aefd2e, type: 3}
-      _enemyDamageAudio: {fileID: 8300000, guid: f9de7538722fc9649b747259b354e896, type: 3}
+      _enemyAttackAudio: {fileID: 0}
+      _enemyDamageAudio: {fileID: 0}

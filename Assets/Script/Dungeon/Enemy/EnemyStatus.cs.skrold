@@ -11,8 +11,8 @@ public class EnemyStatus:MonoBehaviour
     private void Awake()
     {
         _enemyStatusData = Resources.Load("EnemyStatusData") as EnemyStatusData;
-        _enemyStatusData = StaticAssets.SetAssetValue4(_enemyStatusData);
+_enemyStatusData = SetAssetValue4(_enemyStatusData);
         _juelStatusData = Resources.Load("JuelStatusData") as JuelStatusData;
-        _juelStatusData = StaticAssets.SetAssetValue2(_juelStatusData);
+_juelStatusData = SetAssetValue2(_juelStatusData);
     }
 }

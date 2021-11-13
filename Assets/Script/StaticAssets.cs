@@ -7,31 +7,60 @@ using UnityEngine;
 public class StaticAssets : MonoBehaviour
 {
     [SerializeField]
+    private AnimationClip[] _skillAnimationSerialize;
     public static AnimationClip[] _skillAnimation;
     [SerializeField]
+    private GameObject[] _skillCollderObjSerialize;
     public static GameObject[] _skillCollderObj;
     [SerializeField]
+    private Sprite[] _skillImageSerialize;
     public static Sprite[] _skillImage;
     [SerializeField]
+    private AudioClip[] _skillAudioClipSerialize;
     public static AudioClip[] _skillAudioClip;
 
     [SerializeField]
+    private AudioClip[] _juelAttackAudioSerialize;
     public static AudioClip[] _juelAttackAudio;
     [SerializeField]
+    private AudioClip[] _juelDamageAudioSerialize;
     public static AudioClip[] _juelDamageAudio;
 
     [SerializeField]
+    private GameObject[] _initialAttackColliderObjSerialize;
     public static GameObject[] _initialAttackColliderObj;
     [SerializeField]
+    private AudioClip[] _attackAudioClipSerialize;
     public static AudioClip[] _attackAudioClip;
     [SerializeField]
+    private AudioClip[] _damageAudioClipSerialize;
     public static AudioClip[] _damageAudioClip;
 
     [SerializeField]
+    private AudioClip[] _enemyAttackAudioSerialize;
     public static AudioClip[] _enemyAttackAudio;
     [SerializeField]
+    private AudioClip[] _enemyDamageAudioSerialize;
     public static AudioClip[] _enemyDamageAudio;
 
+
+    private void Awake()
+    {
+        _skillAnimation = _skillAnimationSerialize;
+        _skillCollderObj = _skillCollderObjSerialize;
+        _skillImage = _skillImageSerialize;
+        _skillAudioClip = _skillAudioClipSerialize;
+
+        _juelAttackAudio = _juelAttackAudioSerialize;
+        _juelDamageAudio = _juelDamageAudioSerialize;
+
+        _initialAttackColliderObj = _initialAttackColliderObjSerialize;
+        _attackAudioClip = _attackAudioClipSerialize;
+        _damageAudioClip = _damageAudioClipSerialize;
+
+        _enemyAttackAudio = _enemyAttackAudioSerialize;
+        _enemyDamageAudio = _enemyDamageAudioSerialize;
+    }
 
     //Assetファイルから呼び出したものに値を入れる（SkillData）
     public static SkillData SetAssetValue1(SkillData _skillData)
